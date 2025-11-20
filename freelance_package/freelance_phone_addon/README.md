@@ -33,6 +33,7 @@ final menuEntries = buildFreelanceMenuEntries(
 - Dispute creation, stage tracking (initial → mediation → refunds → arbitration), and listing with basic filtering.
 - Escrow status overview plus partial release/admin management utilities.
 - Profile tagging (freelancer tags, gig tags, skills) with helpers to fetch and update the shared taxonomy, including admin tag maintenance endpoints.
+- Profile enrichment endpoints for project portfolios, education/qualifications, and profile reviews with average rating helpers.
 - Reusable repository and API client that map to the Laravel freelance endpoints.
 
 ## Notes

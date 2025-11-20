@@ -13,6 +13,10 @@ import '../models/gig_management.dart';
 import '../models/project.dart';
 import '../models/project_board.dart';
 import '../models/tag.dart';
+import '../models/profile_portfolio.dart';
+import '../models/education_entry.dart';
+import '../models/certification.dart';
+import '../models/profile_review.dart';
 
 class FreelanceApiClient {
   FreelanceApiClient({
@@ -48,8 +52,21 @@ class FreelanceApiClient {
     return _decode(response);
   }
 
+  Future<Map<String, dynamic>> _put(String path, Map<String, dynamic> body) async {
+    final response = await httpClient.put(_uri(path), headers: _headers(), body: jsonEncode(body));
+    return _decode(response);
+  }
+
+  Future<void> _delete(String path) async {
+    final response = await httpClient.delete(_uri(path), headers: _headers());
+    _decode(response);
+  }
+
   Map<String, dynamic> _decode(http.Response response) {
     if (response.statusCode >= 200 && response.statusCode < 300) {
+      if (response.body.isEmpty) {
+        return <String, dynamic>{};
+      }
       return jsonDecode(response.body) as Map<String, dynamic>;
     }
     throw FreelanceApiException('Request failed [${response.statusCode}]: ${response.body}');
@@ -125,6 +142,99 @@ class FreelanceApiClient {
     await _post('gig/$gigId/tags', {
       'tags': tags,
     });
+  }
+
+  Future<List<ProfilePortfolio>> fetchPortfolios({int? userId}) async {
+    final data = await _get('profile/portfolios', {if (userId != null) 'user_id': userId.toString()});
+    return (data['data']?['portfolios'] as List?)
+            ?.map((json) => ProfilePortfolio.fromJson(json as Map<String, dynamic>?))
+            .toList() ??
+        const <ProfilePortfolio>[];
+  }
+
+  Future<ProfilePortfolio> addPortfolio(Map<String, dynamic> payload) async {
+    final data = await _post('profile/portfolio', payload);
+    return ProfilePortfolio.fromJson(data['data'] as Map<String, dynamic>?);
+  }
+
+  Future<ProfilePortfolio> updatePortfolio(int id, Map<String, dynamic> payload) async {
+    final data = await _put('profile/portfolio/$id', payload);
+    return ProfilePortfolio.fromJson(data['data'] as Map<String, dynamic>?);
+  }
+
+  Future<void> deletePortfolio(int id) async {
+    await _delete('profile/portfolio/$id');
+  }
+
+  Future<List<EducationEntry>> fetchEducations({int? userId}) async {
+    final data = await _get('profile/educations', {if (userId != null) 'user_id': userId.toString()});
+    return (data['data']?['educations'] as List?)
+            ?.map((json) => EducationEntry.fromJson(json as Map<String, dynamic>?))
+            .toList() ??
+        const <EducationEntry>[];
+  }
+
+  Future<EducationEntry> addEducation(Map<String, dynamic> payload) async {
+    final data = await _post('profile/education', payload);
+    return EducationEntry.fromJson(data['data'] as Map<String, dynamic>?);
+  }
+
+  Future<EducationEntry> updateEducation(int id, Map<String, dynamic> payload) async {
+    final data = await _put('profile/education/$id', payload);
+    return EducationEntry.fromJson(data['data'] as Map<String, dynamic>?);
+  }
+
+  Future<void> deleteEducation(int id) async {
+    await _delete('profile/education/$id');
+  }
+
+  Future<List<Certification>> fetchCertifications({int? userId}) async {
+    final data = await _get('profile/certifications', {if (userId != null) 'user_id': userId.toString()});
+    return (data['data']?['certifications'] as List?)
+            ?.map((json) => Certification.fromJson(json as Map<String, dynamic>?))
+            .toList() ??
+        const <Certification>[];
+  }
+
+  Future<Certification> addCertification(Map<String, dynamic> payload) async {
+    final data = await _post('profile/certification', payload);
+    return Certification.fromJson(data['data'] as Map<String, dynamic>?);
+  }
+
+  Future<Certification> updateCertification(int id, Map<String, dynamic> payload) async {
+    final data = await _put('profile/certification/$id', payload);
+    return Certification.fromJson(data['data'] as Map<String, dynamic>?);
+  }
+
+  Future<void> deleteCertification(int id) async {
+    await _delete('profile/certification/$id');
+  }
+
+  Future<Map<String, dynamic>> fetchProfileReviews(int userId) async {
+    final data = await _get('profile/reviews', {'user_id': userId.toString()});
+    final reviews = (data['data']?['reviews'] as List?)
+            ?.map((json) => ProfileReview.fromJson(json as Map<String, dynamic>?))
+            .toList() ??
+        const <ProfileReview>[];
+    final average = data['data']?['average_rating'] is num
+        ? (data['data']['average_rating'] as num).toDouble()
+        : double.tryParse(data['data']?['average_rating']?.toString() ?? '');
+    return {'reviews': reviews, 'average_rating': average};
+  }
+
+  Future<ProfileReview> submitProfileReview({
+    required int userId,
+    required double rating,
+    String? comment,
+    String? reference,
+  }) async {
+    final data = await _post('profile/review', {
+      'user_id': userId,
+      'rating': rating,
+      if (comment != null) 'comment': comment,
+      if (reference != null) 'reference': reference,
+    });
+    return ProfileReview.fromJson(data['data'] as Map<String, dynamic>?);
   }
 
   Future<GigManagement> fetchGigManagement(int id) async {

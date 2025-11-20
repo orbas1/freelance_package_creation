@@ -9,6 +9,7 @@ The latest release also adds:
 - Dispute lifecycle tracking (initial → mediation → partial/full refunds → arbitration → closed) with history of stage transitions.
 - Escrow management utilities (partial releases, admin decisions, released totals) compatible with the mobile add-on.
 - Profile enrichment (freelancer tags, gig tags, and skills) with admin endpoints to seed and curate the shared tag taxonomy.
+- User profile depth: project portfolios with links/media, client-written profile reviews and aggregate ratings, and education/certification history with admin visibility.
 
 ## Installation
 

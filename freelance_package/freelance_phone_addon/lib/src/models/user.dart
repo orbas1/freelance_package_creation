@@ -1,5 +1,10 @@
 import 'package:equatable/equatable.dart';
 
+import 'certification.dart';
+import 'education_entry.dart';
+import 'profile_portfolio.dart';
+import 'profile_review.dart';
+
 class UserProfile extends Equatable {
   const UserProfile({
     required this.id,
@@ -12,6 +17,10 @@ class UserProfile extends Equatable {
     this.freelancerTags = const <String>[],
     this.gigTags = const <String>[],
     this.skills = const <String>[],
+    this.portfolios = const <ProfilePortfolio>[],
+    this.educations = const <EducationEntry>[],
+    this.certifications = const <Certification>[],
+    this.reviews = const <ProfileReview>[],
   });
 
   final int id;
@@ -24,6 +33,10 @@ class UserProfile extends Equatable {
   final List<String> freelancerTags;
   final List<String> gigTags;
   final List<String> skills;
+  final List<ProfilePortfolio> portfolios;
+  final List<EducationEntry> educations;
+  final List<Certification> certifications;
+  final List<ProfileReview> reviews;
 
   factory UserProfile.fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -48,6 +61,22 @@ class UserProfile extends Equatable {
       skills: (json['skills'] as List?)?.map((e) => e.toString()).toList() ??
           (json['skill_tags'] as List?)?.map((e) => e.toString()).toList() ??
           const <String>[],
+      portfolios: (json['portfolios'] as List?)
+              ?.map((e) => ProfilePortfolio.fromJson(e as Map<String, dynamic>?))
+              .toList() ??
+          const <ProfilePortfolio>[],
+      educations: (json['educations'] as List?)
+              ?.map((e) => EducationEntry.fromJson(e as Map<String, dynamic>?))
+              .toList() ??
+          const <EducationEntry>[],
+      certifications: (json['certifications'] as List?)
+              ?.map((e) => Certification.fromJson(e as Map<String, dynamic>?))
+              .toList() ??
+          const <Certification>[],
+      reviews: (json['reviews'] as List?)
+              ?.map((e) => ProfileReview.fromJson(e as Map<String, dynamic>?))
+              .toList() ??
+          const <ProfileReview>[],
     );
   }
 
@@ -62,6 +91,10 @@ class UserProfile extends Equatable {
         'freelancer_tags': freelancerTags,
         'gig_tags': gigTags,
         'skills': skills,
+        'portfolios': portfolios.map((p) => p.toJson()).toList(),
+        'educations': educations.map((e) => e.toJson()).toList(),
+        'certifications': certifications.map((c) => c.toJson()).toList(),
+        'reviews': reviews.map((r) => r.toJson()).toList(),
       };
 
   @override
@@ -76,5 +109,9 @@ class UserProfile extends Equatable {
         freelancerTags,
         gigTags,
         skills,
+        portfolios,
+        educations,
+        certifications,
+        reviews,
       ];
 }

@@ -19,6 +19,7 @@ use App\Http\Controllers\Api\GigManagementController;
 use App\Http\Controllers\Api\DisputeStageController;
 use App\Http\Controllers\Api\EscrowManagementController;
 use App\Http\Controllers\Api\ProfileTagController;
+use App\Http\Controllers\Api\ProfileEnrichmentController;
 use App\Http\Controllers\OptionBuilderSettings\OptionBuilderController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SendMessageController;
@@ -136,6 +137,24 @@ Route::middleware('auth:sanctum', 'verified')->group(function () {
         Route::post('freelance/profile/tags', [ProfileTagController::class, 'saveUserTags']);
         Route::post('gig/{id}/tags', [ProfileTagController::class, 'saveGigTags']);
 
+        Route::get('profile/portfolios', [ProfileEnrichmentController::class, 'portfolios']);
+        Route::post('profile/portfolio', [ProfileEnrichmentController::class, 'storePortfolio']);
+        Route::put('profile/portfolio/{id}', [ProfileEnrichmentController::class, 'updatePortfolio']);
+        Route::delete('profile/portfolio/{id}', [ProfileEnrichmentController::class, 'deletePortfolio']);
+
+        Route::get('profile/educations', [ProfileEnrichmentController::class, 'educations']);
+        Route::post('profile/education', [ProfileEnrichmentController::class, 'storeEducation']);
+        Route::put('profile/education/{id}', [ProfileEnrichmentController::class, 'updateEducation']);
+        Route::delete('profile/education/{id}', [ProfileEnrichmentController::class, 'deleteEducation']);
+
+        Route::get('profile/certifications', [ProfileEnrichmentController::class, 'certifications']);
+        Route::post('profile/certification', [ProfileEnrichmentController::class, 'storeCertification']);
+        Route::put('profile/certification/{id}', [ProfileEnrichmentController::class, 'updateCertification']);
+        Route::delete('profile/certification/{id}', [ProfileEnrichmentController::class, 'deleteCertification']);
+
+        Route::get('profile/reviews', [ProfileEnrichmentController::class, 'reviews']);
+        Route::post('profile/review', [ProfileEnrichmentController::class, 'storeReview']);
+
         Route::get('gig/{id}/management', [GigManagementController::class, 'overview']);
         Route::post('gig/{id}/timeline', [GigManagementController::class, 'addTimeline']);
         Route::post('gig/{id}/faq', [GigManagementController::class, 'addFaq']);
@@ -160,6 +179,8 @@ Route::middleware('auth:sanctum', 'verified')->group(function () {
             Route::post('admin/freelance/tags', [ProfileTagController::class, 'store']);
             Route::put('admin/freelance/tags/{id}', [ProfileTagController::class, 'update']);
             Route::delete('admin/freelance/tags/{id}', [ProfileTagController::class, 'destroy']);
+            Route::get('admin/profile/{userId}/enrichment', [ProfileEnrichmentController::class, 'adminOverview']);
+            Route::delete('admin/profile/review/{id}', [ProfileEnrichmentController::class, 'adminDeleteReview']);
         });
     });
 Route::fallback(function () {

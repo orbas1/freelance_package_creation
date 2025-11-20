@@ -133,6 +133,50 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('profile_portfolios', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('title');
+            $table->text('description')->nullable();
+            $table->string('link')->nullable();
+            $table->string('thumbnail_url')->nullable();
+            $table->boolean('featured')->default(false);
+            $table->timestamp('completed_at')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('profile_reviews', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('reviewer')->nullable();
+            $table->decimal('rating', 2, 1);
+            $table->text('comment')->nullable();
+            $table->string('reference')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('profile_educations', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('institution');
+            $table->string('degree')->nullable();
+            $table->string('field')->nullable();
+            $table->integer('start_year')->nullable();
+            $table->integer('end_year')->nullable();
+            $table->timestamps();
+        });
+
+        Schema::create('profile_certifications', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->string('name');
+            $table->string('issuer')->nullable();
+            $table->string('credential_url')->nullable();
+            $table->timestamp('issued_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->timestamps();
+        });
+
         Schema::create('custom_gigs', function (Blueprint $table) {
             $table->id();
             $table->string('title');
@@ -205,6 +249,10 @@ return new class extends Migration {
         Schema::dropIfExists('gig_addons');
         Schema::dropIfExists('gig_faqs');
         Schema::dropIfExists('gig_timeline_items');
+        Schema::dropIfExists('profile_certifications');
+        Schema::dropIfExists('profile_educations');
+        Schema::dropIfExists('profile_reviews');
+        Schema::dropIfExists('profile_portfolios');
         Schema::dropIfExists('project_reviews');
         Schema::dropIfExists('project_time_logs');
         Schema::dropIfExists('project_invitations');

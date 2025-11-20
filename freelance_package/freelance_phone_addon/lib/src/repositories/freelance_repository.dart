@@ -10,6 +10,10 @@ import '../models/project.dart';
 import '../models/project_board.dart';
 import '../models/gig_management.dart';
 import '../models/tag.dart';
+import '../models/profile_portfolio.dart';
+import '../models/education_entry.dart';
+import '../models/certification.dart';
+import '../models/profile_review.dart';
 
 class FreelanceRepository {
   FreelanceRepository({required this.apiClient});
@@ -87,5 +91,71 @@ class FreelanceRepository {
 
   Future<void> toggleFavourite({required int id, required String type}) {
     return apiClient.toggleFavourite(id: id, type: type);
+  }
+
+  Future<List<ProfilePortfolio>> fetchPortfolios({int? userId}) {
+    return apiClient.fetchPortfolios(userId: userId);
+  }
+
+  Future<ProfilePortfolio> addPortfolio(Map<String, dynamic> payload) {
+    return apiClient.addPortfolio(payload);
+  }
+
+  Future<ProfilePortfolio> updatePortfolio(int id, Map<String, dynamic> payload) {
+    return apiClient.updatePortfolio(id, payload);
+  }
+
+  Future<void> deletePortfolio(int id) {
+    return apiClient.deletePortfolio(id);
+  }
+
+  Future<List<EducationEntry>> fetchEducations({int? userId}) {
+    return apiClient.fetchEducations(userId: userId);
+  }
+
+  Future<EducationEntry> addEducation(Map<String, dynamic> payload) {
+    return apiClient.addEducation(payload);
+  }
+
+  Future<EducationEntry> updateEducation(int id, Map<String, dynamic> payload) {
+    return apiClient.updateEducation(id, payload);
+  }
+
+  Future<void> deleteEducation(int id) {
+    return apiClient.deleteEducation(id);
+  }
+
+  Future<List<Certification>> fetchCertifications({int? userId}) {
+    return apiClient.fetchCertifications(userId: userId);
+  }
+
+  Future<Certification> addCertification(Map<String, dynamic> payload) {
+    return apiClient.addCertification(payload);
+  }
+
+  Future<Certification> updateCertification(int id, Map<String, dynamic> payload) {
+    return apiClient.updateCertification(id, payload);
+  }
+
+  Future<void> deleteCertification(int id) {
+    return apiClient.deleteCertification(id);
+  }
+
+  Future<Map<String, dynamic>> fetchProfileReviews(int userId) {
+    return apiClient.fetchProfileReviews(userId);
+  }
+
+  Future<ProfileReview> submitProfileReview({
+    required int userId,
+    required double rating,
+    String? comment,
+    String? reference,
+  }) {
+    return apiClient.submitProfileReview(
+      userId: userId,
+      rating: rating,
+      comment: comment,
+      reference: reference,
+    );
   }
 }
