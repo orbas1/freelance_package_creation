@@ -1,0 +1,43 @@
+# Freelance Phone Addon (Flutter)
+
+This Flutter package mirrors the Taskup freelance experience that was originally delivered in React Native. It exposes screens, providers, and models to plug into a host Flutter application while talking to the Laravel freelance API.
+
+## Getting Started
+
+1. Add the package as a local dependency in your host `pubspec.yaml`:
+
+```yaml
+dependencies:
+  freelance_phone_addon:
+    path: ../freelance_package/freelance_phone_addon
+```
+
+2. Wrap your application with a `ProviderScope` if it is not already using Riverpod.
+3. Inject your API base URL and an auth token provider when building the menu entries:
+
+```dart
+final menuEntries = buildFreelanceMenuEntries(
+  baseUrl: 'https://your-domain.com/api/',
+  tokenProvider: () => authState.token,
+);
+```
+
+4. Add the generated `FreelanceMenuEntry` widgets to your navigation shell. Each entry bootstraps its own `ProviderScope` with the injected overrides so that API calls are authenticated against the Laravel freelance package.
+
+## Features
+
+- Gig and project browsing with filters, favourites, and detail views.
+- Project bidding workflow including amount and optional cover letter.
+- Project management board (tasks, milestones, submissions, hourly logs, invitations, reviews).
+- Gig management console (timeline, FAQs, add-ons, packages, requirements, change requests, reviews, custom gigs).
+- Dispute creation, stage tracking (initial → mediation → refunds → arbitration), and listing with basic filtering.
+- Escrow status overview plus partial release/admin management utilities.
+- Profile tagging (freelancer tags, gig tags, skills) with helpers to fetch and update the shared taxonomy, including admin tag maintenance endpoints.
+- Profile enrichment endpoints for project portfolios, education/qualifications, and profile reviews with average rating helpers.
+- Reusable repository and API client that map to the Laravel freelance endpoints.
+
+## Notes
+
+- Network failures surface through `FreelanceApiException`; handle these at the application level if you want custom UI.
+- Models follow the Laravel API responses; adjust them if the backend payloads change.
+- The package avoids any binary assets to keep it lightweight and portable.
