@@ -2,6 +2,13 @@
 
 This package extracts the gig, project, escrow, and dispute experience from the Taskup Laravel codebase into a publishable package. It ships migrations, Livewire components, Blade templates, API/Web routes, translations, and the supporting models, controllers, resources, middleware, and services required to run the freelance module.
 
+The latest release also adds:
+
+- Project management primitives (tasks, milestones, hourly time logging, submissions, invitations, freelancer matching, and client/freelancer reviews).
+- Gig management extensions (timelines, FAQs, add-ons, packages, requirements, change requests, custom gigs, and gig reviews).
+- Dispute lifecycle tracking (initial → mediation → partial/full refunds → arbitration → closed) with history of stage transitions.
+- Escrow management utilities (partial releases, admin decisions, released totals) compatible with the mobile add-on.
+
 ## Installation
 
 1. Add the package to `composer.json` as a path repository or publish it to your private registry:

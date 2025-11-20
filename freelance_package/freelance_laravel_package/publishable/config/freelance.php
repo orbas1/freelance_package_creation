@@ -6,6 +6,8 @@ return [
         'projects' => true,
         'escrow' => true,
         'disputes' => true,
+        'project_management' => true,
+        'gig_management' => true,
     ],
 
     'commissions' => [
@@ -23,6 +25,10 @@ return [
         'enable_livewire' => true,
         'publish_routes' => true,
         'publish_views' => true,
+        'hourly_tracking' => true,
+        'milestones' => true,
+        'gig_packages' => true,
+        'admin_escrow_management' => true,
     ],
 
     'api' => [

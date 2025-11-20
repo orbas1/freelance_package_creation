@@ -14,6 +14,10 @@ use App\Http\Controllers\Api\TaxonomyController;
 use App\Http\Controllers\Api\EducationController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\ProfileSettingsController;
+use App\Http\Controllers\Api\ProjectManagementController;
+use App\Http\Controllers\Api\GigManagementController;
+use App\Http\Controllers\Api\DisputeStageController;
+use App\Http\Controllers\Api\EscrowManagementController;
 use App\Http\Controllers\OptionBuilderSettings\OptionBuilderController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SendMessageController;
@@ -112,15 +116,41 @@ Route::middleware('auth:sanctum', 'verified')->group(function () {
     Route::get('billing-information',   [ ProfileSettingsController::class, 'getBillingInfo']);
     Route::post('billing-information',  [ ProfileSettingsController::class, 'updateBillingInfo']);
 
-    Route::get('disputes', [ DisputeController::class, 'getDisputes']);
-    Route::get('invoices', [ TransactionController::class, 'getInvoices']);
+        Route::get('disputes', [ DisputeController::class, 'getDisputes']);
+        Route::get('invoices', [ TransactionController::class, 'getInvoices']);
+        Route::get('dispute/{id}/stages', [DisputeStageController::class, 'stages']);
+        Route::post('dispute/{id}/advance', [DisputeStageController::class, 'advance']);
 
-    Route::get('fee-tax',        [ProposalController::class, 'getFeeTax'] );
-    Route::post('send-message',  [SendMessageController::class, 'sendMessage'] );
-    Route::middleware(['role:seller,api'])->group(function () {
-        Route::post('submit-proposal/{id}',  [ProposalController::class, 'submitProposal']);
+        Route::get('project/{slug}/board', [ProjectManagementController::class, 'board']);
+        Route::post('project/{slug}/tasks', [ProjectManagementController::class, 'addTask']);
+        Route::post('project/task/{taskId}', [ProjectManagementController::class, 'updateTaskStatus']);
+        Route::post('project/{slug}/milestones', [ProjectManagementController::class, 'milestone']);
+        Route::post('project/{slug}/submission', [ProjectManagementController::class, 'submitWork']);
+        Route::post('project/{slug}/time-log', [ProjectManagementController::class, 'logTime']);
+        Route::post('project/{slug}/invite', [ProjectManagementController::class, 'invite']);
+        Route::post('project/{slug}/match', [ProjectManagementController::class, 'matchFreelancers']);
+        Route::post('project/{slug}/review', [ProjectManagementController::class, 'review']);
+
+        Route::get('gig/{id}/management', [GigManagementController::class, 'overview']);
+        Route::post('gig/{id}/timeline', [GigManagementController::class, 'addTimeline']);
+        Route::post('gig/{id}/faq', [GigManagementController::class, 'addFaq']);
+        Route::post('gig/{id}/addon', [GigManagementController::class, 'addAddon']);
+        Route::post('gig/{id}/package', [GigManagementController::class, 'addPackage']);
+        Route::post('gig/{id}/requirement', [GigManagementController::class, 'requirement']);
+        Route::post('gig/{id}/change', [GigManagementController::class, 'change']);
+        Route::post('gig/{id}/review', [GigManagementController::class, 'review']);
+        Route::post('gigs/custom', [GigManagementController::class, 'customGig']);
+
+        Route::get('fee-tax',        [ProposalController::class, 'getFeeTax'] );
+        Route::post('send-message',  [SendMessageController::class, 'sendMessage'] );
+        Route::middleware(['role:seller,api'])->group(function () {
+            Route::post('submit-proposal/{id}',  [ProposalController::class, 'submitProposal']);
+        });
+
+        Route::get('escrows/manage', [EscrowManagementController::class, 'index']);
+        Route::post('escrow/{id}/partial-release', [EscrowManagementController::class, 'partialRelease']);
+        Route::post('escrow/{id}/decision', [EscrowManagementController::class, 'adminDecision']);
     });
-});
 Route::fallback(function () {
     return response()->message(message: __('messages.api_url_not_found'), status_code: Response::HTTP_NOT_FOUND);
 });
