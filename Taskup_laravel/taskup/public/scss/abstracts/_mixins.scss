@@ -1,0 +1,144 @@
+
+@mixin btn($clr:$btn_textcolor, $bg:$btn_bgcolor, $shadow:none, $hoverColor:#fff, $iconHoverColor:$btn_textcolor, $hoverBg:$btn_bgcolor, $padding:18px 39px, $rounded:$radius_two, $iconColor:#1E1E1E, $fontSize:16px, $fontWeight:500, $fontFamily:$font_familyv4,){
+    border:0;
+    gap: 10px;
+    color: $clr;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: $padding;
+    cursor: pointer;
+    overflow: hidden;
+    @extend %transition;
+    background-color: $bg;
+    border-radius: $rounded;
+    font: $fontWeight $fontSize $fontFamily;
+    z-index: 1;
+    box-shadow: $shadow;
+    span{
+        z-index: 1;
+        letter-spacing: 0.5px;
+    }
+    i{
+        z-index: 1;
+        font-size: 14px;
+        font-weight: 900;
+        color: $iconColor;
+    }
+    @if $bg == transparent {
+        &:hover,
+        &:focus{
+            outline: none;
+            color: $hoverColor;
+            i{
+                color:$iconHoverColor
+            }
+        } 
+    } @else {
+        &::before{
+            content: '';
+            left: 50%;
+            width: 40px;
+            height: 40px;
+            bottom: -40px;
+            position: absolute;
+            border-radius: 50%;
+            z-index: -1;
+            background: $btn_bgcolor;
+            transform: translateX(-50%);
+            transition: width 0.5s, height 0.5s;
+        }
+        &:hover,
+        &:focus{
+            outline: none;
+            color: $hoverColor;
+            background-color: $hoverBg;
+            span{
+                color: $white;
+            }
+            i{
+                color:$white
+            }
+            &:before{
+                width: 150%;
+                height: 300%;
+            }
+        } 
+    }
+}
+
+@mixin bannerSearch($bg:$white, $padding:10px 10px 10px 24px, $rounded:$radius_two, $maxWidth:670px, $inputColor:$btn_text_color, $placeholderColor:$btn_text_color, $iconColor:$btn_textcolor , $iconbg:$btn_bgcolor) {
+    gap: 20px; 
+    width: 100%;
+    display: flex;
+    padding: $padding;
+    align-items: center;
+    max-width: $maxWidth;
+    background-color: $bg;
+    border-radius: $rounded;
+    box-shadow: 0px 32px 64px -12px rgba(16, 24, 40, 0.06);
+    input{
+        border: 0;
+        padding:0;
+        width: 100%;
+        color:$inputColor;
+        caret-color: $inputColor;
+        box-shadow: none;
+        font: 400 rem(16)/em(19.2,16) $font_familyv4;
+        &::placeholder{
+            color: rgba($placeholderColor , 0.4);
+        }
+        &:hover,
+        &:focus{
+            box-shadow: none;
+            outline: none;
+        }
+    }
+    .tk-search-menu{
+        position: relative;
+        max-width: 96px;
+        flex: none;
+        .form-control{
+            border: 0;
+            box-shadow: none;
+            padding-right: 40px;
+        }
+        .select2-container--default .select2-selection--single{
+            border: 0;
+            box-shadow: none;
+        }
+        > button{
+            background-color: transparent;
+        }
+        > .sub-menu{
+            opacity: 1;
+            display: none;
+            box-shadow: none;
+            visibility: visible;
+            top: calc(100% + 25px);
+            border-radius: 0 0 6px 6px;
+            transition: none;
+            z-index: 99;
+        }
+    }
+    .tk-search_icon{
+        gap: 10px;
+        width: 54px;
+        flex: none;
+        padding: 15px;
+        display: flex;
+        align-items: center;
+        border-radius: 10px;
+        min-height: 54px;
+        background: $iconbg;
+        justify-content: center;
+        color: $iconColor;
+        font: 500 rem(16)/em(24,16) $font_familyv4;
+    }
+    > i{
+        font-size: 18px;
+    }
+
+}
+

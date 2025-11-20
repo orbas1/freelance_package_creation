@@ -1,0 +1,6 @@
+module Pods_Gigfleet_GigfleetTests {
+  umbrella header "Pods-Gigfleet-GigfleetTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

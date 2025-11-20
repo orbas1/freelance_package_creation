@@ -1,0 +1,196 @@
+
+
+@media (max-width:1366px){
+    .page-home-eleven{
+        .tk-hero-banner-five {
+            gap: 50px;
+                padding: 83px 0;
+         
+            figure {
+                max-width: none;
+                margin: 0;
+            }
+            // .tk-homebanner_content {
+            //     .tk-search_category{
+            //         max-width: 80%;
+            //     }
+            // } 
+        } 
+    }
+    .page-home-page{
+        .tk-hero-banner-twelve{
+            figure{
+                img{
+                    height: 530px;
+                }
+            }
+        }
+    }
+}
+@media (max-width:1199px){
+    .page-home-twelve .tk-hero-banner-eleven .tk-homebanner_content{
+        padding: 208px 20px 100px 20px;
+    }
+    .tk-main-wrapper .tk-header-v4 {
+        .tk-navbar {
+            margin-left: 10px;
+        }
+    } 
+    .page-home-page{
+        .tk-hero-banner-twelve{
+                figure {
+                    z-index: -1;
+                    position: relative;
+                    align-self: center;
+                    max-width: 80%;
+                    margin: 0 auto;
+                }
+            .tk-homebanner_content{
+                padding: 80px 10px 0 10px;
+                align-items: flex-start;
+                p {
+                    margin: 0;
+                }
+            }
+        }
+    }
+     .tk-hero-banner-four .tk-homebanner_categories {
+       justify-content: center;
+    }
+    .page-home-five{
+        .tk-hero-banner-nine {
+            padding-left: 10px;
+            padding-right: 10px;
+            .tk-homebanner_content p {
+                margin: 0;
+                margin-top: 20px;
+            }
+            .tk-homebanner_btnwrapper {
+                justify-content: flex-start;
+            }
+        }
+    }
+    .page-home-eleven{
+        padding: 0 0;
+        .tk-hero-banner-five {
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: flex-start;
+            align-items: center;
+            gap: 50px;
+            figure {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+            .tk-homebanner_content {
+                max-width: 100%;
+                text-align: center;
+                p {
+                    margin: 0;
+                    max-width: 100%;
+                }
+            } 
+        } 
+        .tk-homebanner_trustedby{
+            justify-content: center;
+        }
+    }
+ 
+}
+@media (max-width:991px){
+    .page-home-five{
+        .tk-hero-banner-nine {
+            flex-direction: column;
+            gap: 40px;
+            figure{
+                // display: none;
+            }
+            .tk-homebanner_content {
+                max-width: 100%;
+                p{
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+}
+@media (max-width:575px) {
+//    .tk-search_category{
+//         display: block;
+//         padding-left: 10px;
+//         > input {
+//             width: 61%;
+//             float: left;
+//         }
+//         .tk-select{
+//             width: 116px;
+//             margin-left: auto;
+//         }
+//         > .tk-search_icon{
+//             min-width: 100% !important;
+//             padding: 12px !important;
+//             margin-top: 10px;
+//             float: left;
+//         }
+//    }
+}
+@media (max-width:480px) {
+    .tk-main-wrapper .tk-header-v4 {
+        .tk-navbar .navbar-toggler{
+            color: #1E1E1E;
+        }
+    }
+    .page-home-eleven{
+        .tk-hero-banner-five {
+            figure {
+                max-width: 278px;
+            }
+                    
+        } 
+    }
+    .page-home-page{
+        .tk-homebanner_content{
+            padding: 0px 10px 0 10px;
+        }
+    }
+    .page-home-twelve .tk-hero-banner-eleven .tk-homebanner_content {
+        padding: 108px 20px 100px 20px;
+    }
+}
+@media (max-width:420px) {
+    .page-home-five{
+        .tk-homebanner_content{
+            text-align: center;
+            h1{
+                font-size: 36px;
+                line-height: 48px;
+            }
+        }
+        .tk-hero-banner-nine {
+            padding-left: 0;
+            padding-right: 0;
+            .tk-homebanner_categories{
+                // top: 138px;
+                padding: 8px 10px;
+            }
+        }
+    }
+}
+@media (max-width:400px) {
+    .tk-search_category{
+        > input {
+            width: 100%;
+        }
+        .tk-select{
+            width: 100%;
+            max-width: 100%;
+        }
+        .select2-container .select2-selection--single .select2-selection__rendered {
+            padding: 0;
+            text-align: left;
+        }
+   }
+}
+.page-home-eleven:has(.tk-hero-banner-five) .pb-themesection {
+    overflow: hidden;
+}

@@ -1,0 +1,213 @@
+@charset "UTF-8";
+/** ====== Sass function ====== **/
+@import url("https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Inter:wght@100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap");
+:root {
+  --themecolor: #0bb990;
+}
+.tk-cardprojecttitle h4:after{
+  background-color: #0bb990;
+}
+/* theme color scheme page setting start */
+.page-home-six .tk-bannerlist li:after{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='15' viewBox='0 0 16 15' fill='none'%3E%3Cpath d='M0.214318 9.63832C1.1027 10.5015 2.97258 12.4142 4.42218 14.5357C4.71411 14.9611 5.3458 14.946 5.6176 14.5081C7.23078 11.8907 11.8589 4.70062 15.6541 1.75109C16.0341 1.45412 16.1146 0.910525 15.8277 0.522958L15.8252 0.517925C15.5282 0.112742 14.9569 0.0347255 14.5593 0.341759C12.7146 1.76871 7.76683 5.71484 4.49516 9.41182L0.888785 8.44794C0.642151 8.3825 0.377902 8.45549 0.199218 8.6392C-0.0725814 8.91855 -0.0650314 9.364 0.214318 9.63832Z' fill='%230BB990'/%3E%3C/svg%3E");
+}
+/* theme color scheme page setting end */
+/* global page color scheme style start */
+.tb-searchresult-section .tb-filterselect .tb-inputicon a,
+.tagify__dropdown__item:hover,
+.tb-dots .owl-dot.active,
+.tk-feedback-slider-button button:focus,
+.tk-feedback-slider-button button::before,
+.tk-hero-banner-eleven .tk-search_category .tk-search_icon,
+.tk-hero-banner-twelve .tk-search_icon,
+.tk-hero-banner-eight .tk-search_category .tk-search_icon,
+.tk-hero-banner-ten .tk-btn-secondary::before,
+.tk-hero-banner-ten .tk-btn-secondary:hover, .tk-hero-banner-ten .tk-btn-secondary:focus,
+.tk-hero-banner-ten .tk-homebanner_content h1 span::after,
+.tk-hero-banner-seven .tk-homebanner_content h1 span::after,
+.tk-hero-banner-seven .tk-search_category .tk-search_icon,
+.tk-hero-banner-six .tk-bannertopserch .tk-homebanner_content h1 span::after,
+.tk-hero-banner-five .tk-homebanner_content h1 span::after,
+.tk-hero-banner-five .tk-search_category .tk-search_icon,
+.tk-hero-banner-four .tk-homebanner_content h1 span::after ,
+.tk-hero-banner-four .tk-homebanner_content .tk-search_icon ,
+.tk-hero-banner-four .tk-search_category .tk-search_icon ,
+.tk-hero-banner-four .tk-tag:hover ,
+.tk-homebanner-pagination.swiper-pagination-bullets .swiper-pagination-bullet.swiper-pagination-bullet-active,
+.tk-tag:hover,
+.tk-btn-two::before, .tk-btn-secondary::before,
+.tk-btn-two:hover, .tk-btn-two:focus, .tk-btn-secondary:hover, .tk-btn-secondary:focus,
+.tk-hero-banner-two .tk-bannerframe_content .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active,
+.tk-hero-banner-two .swiper-pagination .swiper-pagination-bullet-active,
+.tk-search_category .tk-search_icon,
+button.tk-btn-yellow, button.tk-btn-yellow-lg, a.tk-btn-yellow, a.tk-btn-yellow-lg,
+.tk-btn,.tk-btn::before,.tk-btn:hover, .tk-btn:focus,
+.tk-talent:hover a.tk-btn-card,
+button.tk-btn-yellow:hover, button.tk-btn-yellow-lg:hover, button.tk-btn-yellow:focus, button.tk-btn-yellow-lg:focus, a.tk-btn-yellow:hover, a.tk-btn-yellow-lg:hover, a.tk-btn-yellow:focus, a.tk-btn-yellow-lg:focus,
+.tk-btn-solid, .tk-btn-solid-sm, .tk-btn-solid-sm-lefticon, .tk-btn-solid-lg, .tk-btn-solid-lg-lefticon, .tk-btn-solid-lefticon, .tk-featuretag, .tk-redbtn,
+.tk-btn-solid:hover, .tk-btn-solid-sm:hover, .tk-btn-solid-sm-lefticon:hover, .tk-btn-solid-lg:hover, .tk-btn-solid-lg-lefticon:hover, .tk-btn-solid-lefticon:hover, .tk-featuretag:hover, .tk-btn-solid:focus, .tk-btn-solid-sm:focus, .tk-btn-solid-sm-lefticon:focus, .tk-btn-solid-lg:focus, .tk-btn-solid-lg-lefticon:focus, .tk-btn-solid-lefticon:focus, .tk-featuretag:focus, .tk-redbtn:hover, .tk-redbtn:focus,
+.tk-btn-line:hover, .tk-btn-line-sm:hover, .tk-btn-line-sm-lefticon:hover, .tk-btn-line-lg:hover, .tk-btn-line-lg-lefticon:hover, .tk-btn-line-lefticon:hover, .tk-btn-solid:hover, .tk-btn-solid-sm:hover, .tk-btn-solid-sm-lefticon:hover, .tk-btn-solid-lg:hover, .tk-btn-solid-lg-lefticon:hover, .tk-btn-solid-lefticon:hover, .tk-featuretag:hover, .tk-redbtn:hover, .tk-btn-line:focus, .tk-btn-line-sm:focus, .tk-btn-line-sm-lefticon:focus, .tk-btn-line-lg:focus, .tk-btn-line-lg-lefticon:focus, .tk-btn-line-lefticon:focus, .tk-btn-solid:focus, .tk-btn-solid-sm:focus, .tk-btn-solid-sm-lefticon:focus, .tk-btn-solid-lg:focus, .tk-btn-solid-lg-lefticon:focus, .tk-btn-solid-lefticon:focus, .tk-featuretag:focus, .tk-redbtn:focus, .tk-btn-yellow:hover, .tk-btn-yellow-lg:hover, .tk-btn-yellow:focus, .tk-btn-yellow-lg:focus,
+.tb-btnvtwo, .jconfirm .jconfirm-box .jconfirm-buttons button.btn-default,
+.tb-btn:hover, .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button:hover, .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button:hover, .tb-btnvtwo:hover, .jconfirm .jconfirm-box .jconfirm-buttons button.btn-default:hover,
+.tb-btn, .jconfirm.jconfirm-white .jconfirm-box .jconfirm-buttons button, .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button, .tb-btnvtwo, .jconfirm .jconfirm-box .jconfirm-buttons button.btn-defaul, 
+.tk-section_desciption > a::before,
+.tk-section_desciption > a:hover, .tk-section_desciption > a:focus,
+.tk-btn-signin,
+.tk-btn-signin::before,
+.tk-btn-signin:hover, .tk-btn-signin:focus,
+.tk-navbarnav > li::after,
+.tk-navbar .navbar-toggler,
+.tk-login_title,
+.am-registration-type .tb-radiobox input[type="radio"]:checked + label, .tb-loginto input[type="radio"]:checked + label,
+.tk-search-icon,
+.tk-pricing__content:hover > .tk-btn,
+.tb-away:before,
+.tk-main-sectionv2 .tk-main-title-holder .tk-btn2-wrapper .tk-sectionbtn,
+.tk-tabs-button,
+.tk-withdraw-button,
+.tk-profile-contentvtwo .tk-btn,
+.tk-offcard:hover .tk-btn-card,
+.tk-btn-card::before,
+.tk-btn-card:hover, .tk-btn-card:focus,
+.tk-btn-card.active,
+.tk-morebtn .tk-btn-more::before,
+.tk-morebtn .tk-btn-more:hover, .tk-morebtn .tk-btn-more:focus,
+.tk-section-frequently .tk-section_title .tk-btn,
+.tk-section-frequently .tk-section_title .tk-btn::before,
+.tk-section-frequently .tk-section_title .tk-btn:hover, .tk-section-frequently .tk-section_title .tk-btn:focus,
+.tk-packagepopular > span,
+.tk-packageitem:hover .tk-btn-card,
+.tk-employe-footer .tk-employe-button:hover,
+.tk-pricing-card .tk-packagepopular .tk-btn-card,
+.tk-opportunity-button .tk-btn,
+.tk-opportunity-button .tk-btn::before,
+.tk-opportunity-button .tk-btn:hover, 
+.tk-cardprojecttitle h4:after,
+.tk-bannerlist li:after,
+.tk-opportunity-button .tk-btn:focus{
+  background-color: var(--themecolor);
+}
+.tk-btn-line, .tk-btn-line-sm, .tk-btn-line-sm-lefticon, .tk-btn-line-lg, .tk-btn-line-lg-lefticon, .tk-btn-line-lefticon, .tk-btn-solid, .tk-btn-solid-sm, .tk-btn-solid-sm-lefticon, .tk-btn-solid-lg, .tk-btn-solid-lg-lefticon, .tk-btn-solid-lefticon, .tk-featuretag, .tk-redbtn, .tk-btn-yellow, .tk-btn-yellow-lg{
+  border: 2px solid var(--themecolor);
+}
+.tk-seller-counter-list li:hover a,
+.tk-btnviewpro .tk-btn-solid-lg:hover, .tk-btnviewpro .tk-btn-solid-lg-lefticon:hover,
+.tk-btnsolid-white:hover, .tk-btnsolid-white:focus {
+  background-color: var(--themecolor) !important;
+}
+.tk-btn-yellow:hover, .tk-btn-yellow-lg:hover, .tk-btn-yellow:focus, .tk-btn-yellow-lg:focus {
+  border-color: var(--themecolor);
+  background-color: var(--themecolor);
+}
+.tk-btn-primary{
+  background-color: var(--themecolor) !important;
+  color: #fff;
+}
+.tk-featuretag:hover, .tk-featuretag:focus,
+.tk-featuretag {
+  color: var(--themecolor);
+  background-color: var(--themecolor);
+}
+.tb-ordertitle a,
+.tb-icondetails .tb-desclinks li a,
+.tb-readmorebtn:hover,
+.tk-anchor,
+.tb-tabbitem__listtwo .tb-icondetails > a,
+.tb-icondetails > a ,
+.bg-yellow,
+.tb-theme-color,
+.tb-blue,
+.tb-theme-color,
+.tb-checkbox label:after, .tb-radio label:after,
+.select2-container--default .select2-selection--multiple .select2-selection__clear,
+.tk-tagline span,
+.tk-hero-banner-two .tk-homebanner_content h1 span,
+.tb-taskinfo h6 a:hover, .tb-taskinfo .tk-verified-info > a a:hover, .tb-taskinfo .tk-verified-info strong a:hover, .tk-verified-info .tb-taskinfo strong a:hover,
+.tb-profileform__title--rightarea > a,
+.tb-uploadarea > em label, .tb-uploadarea .tb-uploadbox > em label,
+.tb-earningcost__item span,
+.tk-project-box > h5 > a,
+.tk-project-box > h5 > a:hover,
+.tk-section_title > span,
+.tk-loginform .form-group_action .tk-password-clr_light,
+.tk-upload-list li span,
+.tk-uploadphoto label,
+.tb-desclinks li a,
+.tk-cardprojecttitle strong,
+.tb-desclinks li a::after,
+.tk_show_education,
+.tk-savelisting > li:hover .tk-itemlinksvtwo .tk-startingprice span,
+.tk-project-requirement_content > a,
+.tk-skills-tags li span a,
+.tk-employerproject-edit h4,
+.tk-gigtags li span a,
+.tk-working-rate .tk-project-price > span,
+.tk-continue,
+.tk-projectsstatus_budget strong span,
+.tk-statusview_title span,
+.tk-profile-content .tk-tagline span,
+.tk-work-title strong,
+.tk-cardprojecttitle strong,
+.tk-info-box-layout-1 .tk-info-box-content .tk-subtitle,
+.tk-opportunity > .tk-section_title > span,
+.pb-themesection.tk-cpunterwrapper .tk-profile-content .tk-tagline span{
+  color: var(--themecolor) !important;
+}
+.tk-feedback-slider-description svg [fill="#EE4710"],
+.tk-hero-banner-five .tk-banner-shape svg path,
+.tk-opportunity figure svg rect{
+  fill: var(--themecolor);
+}
+.tb-edit {
+  color: var(--themecolor) !important;
+}
+.tk-projectbtns-two li button:hover,
+.tb-radio-checked .tb-radio label:before ,
+.tk-payoutmethod > li > input:checked + div label:before, 
+.tk-feedback-slider-button button:hover, 
+.tb-payoutmethod > li > input:checked + div label:before {
+  background-color: var(--themecolor);
+  border-color: var(--themecolor);
+}
+.tk-create-button:hover {
+  background: var(--themecolor);
+  border: 1px solid var(--themecolor);
+}
+.tk-packagepopular {
+  border: 2px solid var(--themecolor);
+}
+.tk-opportunity::after{
+  background: conic-gradient(from calc(var(--angle) + var(--start-angle)), transparent 0, var(--themecolor) 40%, transparent 45%);
+}
+.page-home-five .tk-profile-contentvtwo .tk-btn,
+.tk-profile-contentvtwo .tk-btn,
+.page-home-eleven .tk-profile-contentvtwo .tk-btn{
+  border: 1px solid #FFF;
+  background-color: transparent;
+}
+.tk-profile-contentvtwo .tk-tagline span {
+  color: #fff;
+}
+.page-home-five .tk-profile-contentvtwo .tk-btn:hover,
+.tk-profile-contentvtwo .tk-btn:hover,
+.page-home-eleven .tk-profile-contentvtwo .tk-btn:hover{
+  border-color: var(--themecolor);
+}
+/* global page color scheme style start */
+
+.tk-employe-info:hover .tk-employe-button{
+  color: #fff;
+  background-color: var(--themecolor)
+}
+@media (max-width: 1199px) {
+  .tk-header-v6 .tk-navbarnav > li > a > i,
+  .tk-header-v6 .page-item-has-children > .sub-menu > .page-item-has-children > a > i,
+  .tk-header-v7 .tk-navbarnav > li > a > i,
+  .tk-header-v7 .page-item-has-children > .sub-menu > .page-item-has-children > a > i,
+  .tk-header-v10 .tk-navbarnav > li > a > i,
+  .tk-header-v10 .page-item-has-children > .sub-menu > .page-item-has-children > a > i,
+  .tk-header-v11 .tk-navbarnav > li > a > i,
+  .tk-header-v11 .page-item-has-children > .sub-menu > .page-item-has-children > a > i{
+    background-color: var(--themecolor);
+  }
+}

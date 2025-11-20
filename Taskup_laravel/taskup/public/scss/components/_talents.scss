@@ -1,0 +1,274 @@
+
+.tk-talent-slider{
+    overflow: visible;
+    .swiper-slide{
+        width: auto;
+        padding-right: 24px;
+        &:last-child{
+            padding-right: 30px;
+        }
+        
+    }
+    .swiper-scrollbar{
+        border-radius: 2px;
+        max-width: 1256px;
+        background: $scrollbar_bg_color;
+        &.swiper-scrollbar-horizontal{
+            inset: 0;
+            margin-top: 60px;
+            position: relative;
+        }
+        .swiper-scrollbar-drag{
+            background: $scrollbar_thumb_color;
+        }
+    }
+}
+.tk-talent{
+    gap: 26px;
+    padding: 20px;
+    @extend %flex;
+    border-radius: 20px;
+    flex-direction: column;
+    height: 100%;
+    border: 1px solid $border-color_vtwo;
+    background-color: $white;
+    @extend %transition;
+    &:hover{
+        border-color: transparent;
+        box-shadow: 0px 32px 64px -12px rgba(16, 24, 40, 0.06);
+        a.tk-btn-card{
+            outline: none;
+            color: $btn_textcolor;
+            background-color: $btn_bgcolor;
+            &::before{
+                width: 300px;
+                height: 300px;
+            }
+        }
+    }
+    figure{
+        margin: 0;
+        overflow: hidden;
+        border-radius: 20px;
+        margin: -15px -15px 0;
+        img{
+            width: 100%;
+            object-fit: cover;
+            max-height: 240px;
+        }
+    }
+    &-content{
+        gap: 20px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    &_wrppaer{
+        width: 100%;
+        figure{
+            display: none;
+        }
+    }
+    &-title{
+        gap: 10px;
+        display: flex;
+        align-items: center;
+        h3{
+            gap: 10px;
+            display: flex;
+            margin-bottom: 0;
+            align-items: center;
+            color: $header_text_color;
+            letter-spacing: normal;
+            font: 500 rem(20)/em(24,20) $heading-font-family;
+            a{
+                font-size: 16px;
+                line-height: 25px;
+                color: #999;
+            }
+            a > div{
+                display: inline-block;
+            }
+            i{
+                font-size: 16px;
+                color: #22C55E;
+            }
+        }
+        span{
+            gap: 4px;
+            flex: none;
+            display: flex;
+            padding: 5px 10px;
+            margin-left: auto;
+            border-radius: 8px;
+            color:  #EE4710;
+            align-items: center;
+            font: 700 rem(12)/em(17,12) $body-font-family;
+            background: rgba(238, 71, 16, 0.10);
+            i{
+                font-size: 12px;
+                color:  #EE4710;
+            }
+        }
+    }
+    &-rate{
+        padding: 0;
+        margin: 4px 0 0;
+        li{
+            gap: 10px;
+            display: flex;
+            align-items: center;
+            list-style-type: none;
+            justify-content: space-between;
+            + li{
+                margin-top: 10px;
+            }
+            > span{
+                gap: 10px;
+                display: flex;
+                align-items: center;
+                color: rgba($color: $header_text_color, $alpha: 0.6);
+                font: 500 14px/20px $heading-font-family;
+            }
+            strong{
+                text-align: right;
+                color: $header_text_color;
+                font: 400 16px/22px $heading-font-family;
+            }
+        }
+    }
+    &.tk-talent-vtwo{
+        &>figure{
+            display: none;
+        }
+        & .tk-talent_wrppaer{
+            gap: 10px;
+            @extend %flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            figure{
+                flex: none;
+                display: block;
+                img{
+                    width: 50px;
+                    height: 50px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+            }
+            .tk-talent-profile-detail{
+                width: 100%;
+            }
+        }
+    }
+}
+.tk-talent-profile-detail h3{
+    font-size: 18px;
+    margin: 5px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+.tk-rating-star{
+    gap: 6px;
+    @extend %flex;
+    margin-top: 4px;
+    align-items: center;
+    > i{
+        font-size: 14px;
+        color: #fddb5b;
+    }
+    span{
+        display: block;
+        color: rgba($header_text_color,0.6);
+        font: 400 rem(15)/em(21,15) $body-font-family;
+    }
+}
+.tk-talent-tags{
+    padding-top: 26px;
+    border-top: 1px solid $border-color;
+    ul{
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        @extend %flex;
+        align-items: center;
+        li{
+            list-style: none;
+            span{
+                display: block;
+                color: $tag_color;
+                padding: 4px 16px;
+                border-radius: 8px;
+                background: $section_bg_color;
+                font: 500 14px/20px $body-font-family;
+            }
+            a{
+                display: block;
+                padding: 4px 0;
+                color: $tag_color;
+                font: 500 14px/20px $body-font-family;
+            }
+        }
+    }
+    + [data-toggle="tooltip"]{
+        display: none;
+    }
+}
+.tk-talent-btns{
+    gap: 4px;
+    @extend %flex;
+    margin-top: auto;
+    align-items: center;
+    & a.tk-btn-card{
+        flex: auto;
+        padding: 11px 38px;
+        span{
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.5px;
+        }
+    }
+    & a.tk-favicon,button.tk-favicon{
+        flex: none;
+        width: 46px;
+        height: 46px;
+        overflow: hidden;
+        position: relative;
+        align-items: center;
+        border-radius: 10px;
+        display: inline-flex;
+        justify-content: center;
+        color: rgba($color: $header_text_color, $alpha: 0.4);
+        font: 500 16px $body-font-family;
+        background-color: $section_bg_color;
+        @extend %transition;
+        i{
+            @extend %transition;
+        }
+        &:hover,
+        &.active{
+            
+            background: #FEF3F2;
+            i{
+                color: #F04438;
+            }
+        }
+    }
+}
+.tk-talent-uservtwo {
+    .tk-talent-content{
+        gap: 10px;
+        flex-direction: row;
+        > figure{
+            flex: none;
+            img{
+                width: 50px;
+                height: 50px;
+                max-height: 100%;
+                border-radius: 50%;
+            }
+        }
+    }
+}

@@ -1,0 +1,255 @@
+{
+  "public/admin/css/fonts/themify.eot": {
+    "file": "assets/themify-dff415da.eot",
+    "src": "public/admin/css/fonts/themify.eot"
+  },
+  "public/admin/css/fonts/themify.svg": {
+    "file": "assets/themify-2e242102.svg",
+    "src": "public/admin/css/fonts/themify.svg"
+  },
+  "public/admin/css/fonts/themify.ttf": {
+    "file": "assets/themify-350663a4.ttf",
+    "src": "public/admin/css/fonts/themify.ttf"
+  },
+  "public/admin/css/fonts/themify.woff": {
+    "file": "assets/themify-0db5c5a1.woff",
+    "src": "public/admin/css/fonts/themify.woff"
+  },
+  "public/admin/css/themify-icons.css": {
+    "file": "assets/themify-icons-73e6ce2c.css",
+    "isEntry": true,
+    "src": "public/admin/css/themify-icons.css"
+  },
+  "public/common/css/bootstrap.min.css": {
+    "file": "assets/bootstrap.min-087e3f61.css",
+    "isEntry": true,
+    "src": "public/common/css/bootstrap.min.css"
+  },
+  "public/common/css/combotree.css": {
+    "file": "assets/combotree-ce717c70.css",
+    "isEntry": true,
+    "src": "public/common/css/combotree.css"
+  },
+  "public/common/css/croppie.css": {
+    "file": "assets/croppie-71531fc5.css",
+    "isEntry": true,
+    "src": "public/common/css/croppie.css"
+  },
+  "public/common/css/jquery-confirm.min.css": {
+    "file": "assets/jquery-confirm.min-32256c06.css",
+    "isEntry": true,
+    "src": "public/common/css/jquery-confirm.min.css"
+  },
+  "public/common/css/jquery.mCustomScrollbar.min.css": {
+    "file": "assets/jquery.mCustomScrollbar.min-737e2d89.css",
+    "isEntry": true,
+    "src": "public/common/css/jquery.mCustomScrollbar.min.css"
+  },
+  "public/common/css/select2.min.css": {
+    "file": "assets/select2.min-dc4b00ee.css",
+    "isEntry": true,
+    "src": "public/common/css/select2.min.css"
+  },
+  "public/common/css/tinymce.css": {
+    "file": "assets/tinymce-cd2cc723.css",
+    "isEntry": true,
+    "src": "public/common/css/tinymce.css"
+  },
+  "public/common/js/jquery-confirm.min.js": {
+    "file": "assets/jquery-confirm.min-27573cbf.js",
+    "isEntry": true,
+    "src": "public/common/js/jquery-confirm.min.js"
+  },
+  "public/common/js/select2.min.js": {
+    "file": "assets/select2.min-ff00463c.js",
+    "isEntry": true,
+    "src": "public/common/js/select2.min.js"
+  },
+  "public/css/feather-icons.css": {
+    "file": "assets/feather-icons-3c985680.css",
+    "isEntry": true,
+    "src": "public/css/feather-icons.css"
+  },
+  "public/css/fontawesome/all.min.css": {
+    "file": "assets/all.min-198ec951.css",
+    "isEntry": true,
+    "src": "public/css/fontawesome/all.min.css"
+  },
+  "public/css/fontawesome/font-awesome-six.css": {
+    "file": "assets/font-awesome-six-28d7d3a2.css",
+    "isEntry": true,
+    "src": "public/css/fontawesome/font-awesome-six.css"
+  },
+  "public/css/fontawesome/nunito-font.css": {
+    "file": "assets/nunito-font-5b6b78ed.css",
+    "isEntry": true,
+    "src": "public/css/fontawesome/nunito-font.css"
+  },
+  "public/css/fonts/icomoon.eot": {
+    "file": "assets/icomoon-f6563540.eot",
+    "src": "public/css/fonts/icomoon.eot"
+  },
+  "public/css/fonts/icomoon.svg": {
+    "file": "assets/icomoon-ab90a89e.svg",
+    "src": "public/css/fonts/icomoon.svg"
+  },
+  "public/css/fonts/icomoon.ttf": {
+    "file": "assets/icomoon-092c4726.ttf",
+    "src": "public/css/fonts/icomoon.ttf"
+  },
+  "public/css/fonts/icomoon.woff": {
+    "file": "assets/icomoon-ba79ccde.woff",
+    "src": "public/css/fonts/icomoon.woff"
+  },
+  "public/css/nouislider.min.css": {
+    "file": "assets/nouislider.min-2d6f9984.css",
+    "isEntry": true,
+    "src": "public/css/nouislider.min.css"
+  },
+  "public/css/rangeslider.css": {
+    "file": "assets/rangeslider-23a02aae.css",
+    "isEntry": true,
+    "src": "public/css/rangeslider.css"
+  },
+  "public/css/splide.min.css": {
+    "file": "assets/splide.min-7e5f8a80.css",
+    "isEntry": true,
+    "src": "public/css/splide.min.css"
+  },
+  "public/css/swiper-bundle.min.css": {
+    "file": "assets/swiper-bundle.min-974c1510.css",
+    "isEntry": true,
+    "src": "public/css/swiper-bundle.min.css"
+  },
+  "public/css/swiper.min.css": {
+    "file": "assets/swiper.min-079e2dcd.css",
+    "isEntry": true,
+    "src": "public/css/swiper.min.css"
+  },
+  "public/css/venobox.min.css": {
+    "file": "assets/venobox.min-972e853b.css",
+    "isEntry": true,
+    "src": "public/css/venobox.min.css"
+  },
+  "public/css/webfonts-six/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-b0d7eebb.ttf",
+    "src": "public/css/webfonts-six/fa-brands-400.ttf"
+  },
+  "public/css/webfonts-six/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-cb0b7d24.woff2",
+    "src": "public/css/webfonts-six/fa-brands-400.woff2"
+  },
+  "public/css/webfonts-six/fa-duotone-900.ttf": {
+    "file": "assets/fa-duotone-900-89e285ab.ttf",
+    "src": "public/css/webfonts-six/fa-duotone-900.ttf"
+  },
+  "public/css/webfonts-six/fa-duotone-900.woff2": {
+    "file": "assets/fa-duotone-900-06323e04.woff2",
+    "src": "public/css/webfonts-six/fa-duotone-900.woff2"
+  },
+  "public/css/webfonts-six/fa-light-300.ttf": {
+    "file": "assets/fa-light-300-657f3544.ttf",
+    "src": "public/css/webfonts-six/fa-light-300.ttf"
+  },
+  "public/css/webfonts-six/fa-light-300.woff2": {
+    "file": "assets/fa-light-300-f450dd90.woff2",
+    "src": "public/css/webfonts-six/fa-light-300.woff2"
+  },
+  "public/css/webfonts-six/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-67181d56.ttf",
+    "src": "public/css/webfonts-six/fa-regular-400.ttf"
+  },
+  "public/css/webfonts-six/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-096a3826.woff2",
+    "src": "public/css/webfonts-six/fa-regular-400.woff2"
+  },
+  "public/css/webfonts-six/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-447c5feb.ttf",
+    "src": "public/css/webfonts-six/fa-solid-900.ttf"
+  },
+  "public/css/webfonts-six/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-c5d9c491.woff2",
+    "src": "public/css/webfonts-six/fa-solid-900.woff2"
+  },
+  "public/css/webfonts-six/fa-thin-100.ttf": {
+    "file": "assets/fa-thin-100-98efa693.ttf",
+    "src": "public/css/webfonts-six/fa-thin-100.ttf"
+  },
+  "public/css/webfonts-six/fa-thin-100.woff2": {
+    "file": "assets/fa-thin-100-b13e8c34.woff2",
+    "src": "public/css/webfonts-six/fa-thin-100.woff2"
+  },
+  "public/css/webfonts-six/fa-v4compatibility.ttf": {
+    "file": "assets/fa-v4compatibility-074d3757.ttf",
+    "src": "public/css/webfonts-six/fa-v4compatibility.ttf"
+  },
+  "public/css/webfonts-six/fa-v4compatibility.woff2": {
+    "file": "assets/fa-v4compatibility-8eeacff9.woff2",
+    "src": "public/css/webfonts-six/fa-v4compatibility.woff2"
+  },
+  "public/css/webfonts/fa-brands-400.eot": {
+    "file": "assets/fa-brands-400-e9fdf947.eot",
+    "src": "public/css/webfonts/fa-brands-400.eot"
+  },
+  "public/css/webfonts/fa-brands-400.svg": {
+    "file": "assets/fa-brands-400-4413a1f9.svg",
+    "src": "public/css/webfonts/fa-brands-400.svg"
+  },
+  "public/css/webfonts/fa-brands-400.ttf": {
+    "file": "assets/fa-brands-400-6b347ff0.ttf",
+    "src": "public/css/webfonts/fa-brands-400.ttf"
+  },
+  "public/css/webfonts/fa-brands-400.woff": {
+    "file": "assets/fa-brands-400-1af816db.woff",
+    "src": "public/css/webfonts/fa-brands-400.woff"
+  },
+  "public/css/webfonts/fa-brands-400.woff2": {
+    "file": "assets/fa-brands-400-8e4560c1.woff2",
+    "src": "public/css/webfonts/fa-brands-400.woff2"
+  },
+  "public/css/webfonts/fa-regular-400.eot": {
+    "file": "assets/fa-regular-400-c1465a6b.eot",
+    "src": "public/css/webfonts/fa-regular-400.eot"
+  },
+  "public/css/webfonts/fa-regular-400.svg": {
+    "file": "assets/fa-regular-400-b94aca27.svg",
+    "src": "public/css/webfonts/fa-regular-400.svg"
+  },
+  "public/css/webfonts/fa-regular-400.ttf": {
+    "file": "assets/fa-regular-400-6a335d1c.ttf",
+    "src": "public/css/webfonts/fa-regular-400.ttf"
+  },
+  "public/css/webfonts/fa-regular-400.woff": {
+    "file": "assets/fa-regular-400-864c8f70.woff",
+    "src": "public/css/webfonts/fa-regular-400.woff"
+  },
+  "public/css/webfonts/fa-regular-400.woff2": {
+    "file": "assets/fa-regular-400-86e496b5.woff2",
+    "src": "public/css/webfonts/fa-regular-400.woff2"
+  },
+  "public/css/webfonts/fa-solid-900.eot": {
+    "file": "assets/fa-solid-900-f29eef66.eot",
+    "src": "public/css/webfonts/fa-solid-900.eot"
+  },
+  "public/css/webfonts/fa-solid-900.svg": {
+    "file": "assets/fa-solid-900-86aaeb99.svg",
+    "src": "public/css/webfonts/fa-solid-900.svg"
+  },
+  "public/css/webfonts/fa-solid-900.ttf": {
+    "file": "assets/fa-solid-900-0389b061.ttf",
+    "src": "public/css/webfonts/fa-solid-900.ttf"
+  },
+  "public/css/webfonts/fa-solid-900.woff": {
+    "file": "assets/fa-solid-900-3b60c77e.woff",
+    "src": "public/css/webfonts/fa-solid-900.woff"
+  },
+  "public/css/webfonts/fa-solid-900.woff2": {
+    "file": "assets/fa-solid-900-787d76ad.woff2",
+    "src": "public/css/webfonts/fa-solid-900.woff2"
+  },
+  "public/js/vendor/nouislider.min.js": {
+    "file": "assets/nouislider.min-1e5ef6f2.js",
+    "isEntry": true,
+    "src": "public/js/vendor/nouislider.min.js"
+  }
+}

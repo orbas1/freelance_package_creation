@@ -1,0 +1,287 @@
+.tk-employerproject{
+    display: flex;
+    align-items: center;
+    background: $white;
+    box-shadow: inset 0px -1px 0px #EEEEEE;
+    &-title{
+        .tk-project-tag{
+            margin-bottom:10px;
+        }
+        h3{
+            margin: 0;
+            font-size: rem(22);
+            line-height: em(30,22);
+        }
+    }
+    &-edit{
+        flex: none;
+        display: flex;
+        margin-left: auto;
+        align-self: center;
+        padding-left: 30px;
+        align-items: center;
+        h4{
+            color:$theme-color ;
+            margin-bottom: 0;
+            padding-right: 20px;
+            flex: none;
+        }
+       .tk-btn-solid-lg {
+        height: 40px;
+        flex: none;
+       }
+    }
+}
+.tk-freelancer-search{
+    display: flex;
+    align-items: center;
+    figure{
+        margin:0 20px 0 0;
+        flex: none;
+        border-radius: 10px;
+        img{
+            width: 100px;
+            height: 100px;
+            display: block;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+    }
+}
+.tk-freelancer-content-two{
+    > a{
+        display: flex;
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 25px;
+        color: $text-light;
+        align-items: center;
+        &:hover{
+            color: $anchor-color;
+        }
+        i{
+            font-size: 16px;
+            color: $bright-green;
+            padding-left: 10px;
+        }
+    }
+    .tk-description{
+        margin: 8px 0 0;
+    }
+    > h5{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        font-weight: 500;
+        margin-bottom: 6px;
+
+    }
+    .tk-gigtags{
+        margin-top: 20px;
+    }
+}
+.tk-price-two{
+    padding-left: 20px;
+    text-align: right;
+    margin-left: auto;
+    flex: none;
+    align-self: flex-start;
+
+    span{
+        @extend %h6;
+        color: $dark;
+        font-weight: 500;
+    }
+    h4{
+        margin-bottom: 0;
+        @extend %transition;
+        font-weight: 500;
+        font-size: 16px;
+        color: $heading-font-color;
+    }
+}
+.tk-project-wrappper-three{
+    @extend %transition;
+    &:hover{
+        box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.04), 0px 3px 16px rgba(0, 0, 0, 0.04);
+    }
+}
+.tk-save{
+    @extend %p14;
+    display: flex;
+    align-items: center;
+    color: $light;
+    i{
+        font-size: 16px;
+        line-height: 24px;
+        color: $light;
+        padding-right: 6px;
+    }
+    a{
+        color: $light;
+        @extend %p14;
+        font-weight: 600;
+    }
+    &:hover{
+        color: $charcoal_black;
+    }
+}
+.tk-liked{
+    > span{
+        color: $red !important;
+    }
+    i{
+        color: $red !important;
+        &::before{
+            content: "\f004";
+            font-weight: 600;
+            font-family: 'Font Awesome 5 Free';
+        }
+    }
+}
+.tk-generalsearch, .tk-sortby{
+    label {
+        align-items: center;
+        width: auto;
+        color: #0A0F26;
+        @extend %h6;
+        margin: 0 0 4px;
+    }
+}
+.tk-hastippy{
+    position: relative;
+    display: flex;
+    .tk-tippycontent{
+        top: -25px;
+        left: 20px;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+}
+.tk-tippycontent{
+    padding: 12px;
+    color: #fff;
+    width: max-content;
+    text-shadow: none;
+    background: #1E1E1E;
+    position: relative;
+    border-radius: 10px;
+    transition: opacity 0.2s ease 0s;
+    font: 500 12px/18px "Inter", sans-serif;
+    box-shadow: 4px 8px 48px -8px rgba(99, 115, 146, 0.12);
+}
+.tk-project-wrapper-two{
+    > .tk-hastippy { 
+        .tk-tippycontent{
+            left: 10px;
+            top: -30px;
+            &::after{
+                left: 50%;
+                content: "";
+                bottom: -7px;
+                color: #1E1E1E;
+                margin-left: -8px;
+                position: absolute;
+                border-style: solid;
+                display: block !important;
+                border-color: transparent;
+                border-width: 8px 8px 0;
+                border-top-color: initial;
+                transform-origin: center top;
+            }
+        }
+        & ~ .tk-project-tag-two{
+            left: 22px;
+        }
+    }
+}
+
+.tk-gigtags{
+    padding: 0;
+    margin: 0;
+    @extend %flex;
+    align-items: center;
+    gap: 16px;
+    li{
+        list-style-type: none;
+        display: flex;
+        align-items: center;
+        padding: 2px 11px;
+        @extend %tiny_title;
+        font-weight: 700;
+        color: $dark;
+        border-radius: $radius;
+        background-color: $lightest;
+        border: 1px solid $lightest;
+        @extend %transition;
+        &:hover{
+            color: $dark;
+            background-color: $white;
+            border-color: $lightest_2;
+        }
+        span{
+            a{
+                display: block;
+                @extend %label_title;
+                color: $theme-color;
+            }
+        }
+    }
+}
+.tk-find-talent{
+    .tk-price-holder{
+        align-items: center;
+    }
+    &.tk-project-wrapper-two > .tk-employerproject{
+        padding: 20px;
+    }
+}
+.tk-blogviewdatessm{
+    gap: 5px 24px;
+    li{
+        em{
+            font-weight: 500;
+        }
+    }
+}
+.tk-categoriesfilter{
+    .tk-form-checkbox{
+        align-items: center;
+    }
+    .form-check-label{
+        font-size: 15px;
+        line-height: 24px;
+        color: $header_text_color;
+        span{
+            color: $header_text_color;
+        }
+    } 
+    .tk-form-check-input-sm{
+        width: 20px;
+        height: 20px;
+    }
+}
+.tk-sort{
+    padding-top: 6px;
+    padding-bottom: 24px;
+    h3.tk-search{
+        padding-top: 9px;
+    }
+}
+.tk-sort.tk-searchproject{padding-top: 0;}
+.tk-blog-tags{
+    padding: 3px 12px;
+    &:hover,
+    &-active{
+        background-color: #fff;
+        border-color: $border-color;
+    }
+}
+.tk-actionselect{
+    >span {
+        color: $btn_text_color;
+        padding-right: 20px;
+    }
+}

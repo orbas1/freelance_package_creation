@@ -1,0 +1,6 @@
+module Pods_Gigfleet {
+  umbrella header "Pods-Gigfleet-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,218 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Site pages Language Lines
+    |--------------------------------------------------------------------------
+   
+    */
+
+    'page_status'               => 'Установить статус страницы как',
+    'enter_value'               => 'Введите значение',
+    'general'                   => 'Общие',
+    'view'                      => 'Просмотр',
+    'title'                     => 'Заголовок',
+    'publish'                   => 'Опубликовать',
+    'back'                      => 'Назад',
+    'sub_title'                 => 'Подзаголовок',
+    'description'               => 'Описание',
+    'categories'                => 'Категории',
+    'select_category'           => 'Выберите категорию',
+    'selected_categories'       => 'Выбранные категории',
+    'selected_projects'         => 'Выбранные проекты',
+    'drop_section_txt'          => 'Перетащите компонент сюда',
+    'no_block_settings'         => 'Выберите элемент справа, чтобы просмотреть его настройки здесь',
+    'no_block_style_settings'   => 'Выберите элемент справа, чтобы просмотреть настройки стиля здесь',
+    'explore_all_btn_txt'       => 'Текст кнопки "Исследовать"',
+    'search_elements'           => 'Поиск элементов',
+    'explore_all'               => 'Исследовать все',
+    'advance_settings'          => 'Расширенные настройки',
+    'margin_settings'           => 'Настройки отступов',
+    'position_settings'         => 'Настройки позиции',
+    'padding_settings'          => 'Настройки отступов внутри',
+    'margin_top'                => 'Отступ сверху',
+    'margin_left'               => 'Отступ слева',
+    'margin_right'              => 'Отступ справа',
+    'margin_bottom'             => 'Отступ снизу',
+    'padding_top'               => 'Внутренний отступ сверху',
+    'padding_left'              => 'Внутренний отступ слева',
+    'padding_right'             => 'Внутренний отступ справа',
+    'padding_bottom'            => 'Внутренний отступ снизу',
+    'width'                     => 'Ширина',
+    'min_width'                 => 'Минимальная ширина',
+    'max_width'                 => 'Максимальная ширина',
+    'height'                    => 'Высота',
+    'min_height'                => 'Минимальная высота',
+    'max_height'                => 'Максимальная высота',
+    'px'                        => 'пикс.',
+    'page_published'            => 'Страница успешно опубликована',
+    'upload_bg_img'             => 'Загрузить изображение фона',
+    'upload_img'                => 'Загрузить изображение',
+    'text_alignment'            => 'Выравнивание текста',
+    'custom_class'              => 'Пользовательский класс',
+    'custom_class_desc'         => 'Добавьте несколько классов, разделяя пробелом',
+
+    // -------------------- Pages Name ------------------ \\
+    'home_page'                => 'Главная',
+    'home_page_title'          => 'Главная',
+    'aboutus_page'             => 'О нас',
+    'aboutus_title'            => 'О нас',
+    'term_condition_page'      => 'Условия',
+    'term_condition_title'     => 'Условия использования',
+    'faq_page'                 => 'ЧаВо',
+    'faq_title'                => 'Часто задаваемые вопросы',
+
+    
+    //----------------------Section Names ----------------\\
+    'header_block'                  => 'Шапка',
+    'top_menu_block'                => 'Верхнее меню',
+    'footer_block'                  => 'Подвал',
+    'category_block'                => 'Категории',
+    'mob_app_block'                 => 'Мобильное приложение',
+    'projects_block'                => 'Проекты',
+    'hiring_process_block'          => 'Процесс найма',
+    'video_section'                 => 'Видео раздел',
+    'footer_section'                => 'Подвал',
+    'search_talent'                 => 'Поиск талантов',
+    'seller_section'                => 'Раздел для профессионалов',
+    'opportunities_section'         => 'Раздел возможностей',
+    'user_response_section'         => 'Раздел отзывов пользователей',
+    'ques_srch_block'               => 'Раздел поиска вопросов',
+    'send_quest_block'              => 'Отправить вопрос',
+    'contactus_card_block'          => 'Контактные карточки',
+    'terms_condition_block'         => 'Условия и положения',
+
+    // ---------------------------Menu Managment---------------- \\
+
+    'menu_management'               => 'Управление меню',
+    'add_new_menu'                  => 'Добавить новое меню',
+    'edit_menu'                     => 'Редактировать меню',
+    'pages'                         => 'Страницы',
+    'custom'                        => 'Пользовательский',
+    'select_all_pages'              => 'Выбрать все страницы',
+    'add_to_menu'                   => 'Добавить в меню',
+    'custom_url'                    => 'Пользовательский URL',
+    'enter_url'                     => 'Введите URL',
+    'add_label'                     => 'Добавить метку',
+    'menu_title'                    => 'Заголовок меню',
+    'select_menu'                   => 'Выберите меню для редактирования',
+    'select_all_menu'               => 'Выбрать все меню',
+    'remove_selected_menu'          => 'Удалить выбранные меню',
+    'delete_menu'                   => 'Удалить меню',
+    'save_menu'                     => 'Сохранить меню',
+    'add_header_menu'               => 'Добавить это меню в шапку',
+    'add_footer_menu'               => 'Добавить это меню в подвал',
+    'menu_position'                 => 'Выберите позицию меню',
+    'no_menu_items_found'           => 'Меню еще не добавлено',
+    'menu_label'                    => 'Метка меню',
+    'add_menu_items'                => 'Пожалуйста, добавьте пункты меню перед сохранением',
+    'select_menu_err'               => 'Пожалуйста, выберите меню',
+    'menu_arrange'                  => 'Перетащите элементы в желаемом порядке. Нажмите стрелку справа от элемента, чтобы открыть дополнительные настройки.',
+
+
+    // --------------------------- End Menu Managment ---------------- \\ 
+    // -------------------- Header Component ------------------------------- \\
+    'seller_opt'            => 'Продавцы',
+    'project_opt'           => 'Проекты',
+    'gigs_opt'              => 'Услуги',
+    'select_list_type'      => 'Выберите тип списка',
+    'heading_txt'           => 'Текст заголовка',
+    'talent_btn_txt'        => 'Текст кнопки "Таланты"',
+    'work_btn_txt'          => 'Текст кнопки "Работа"',
+    'after_btn_text'        => 'Текст после кнопки',
+    'counter_option_txt'    => 'Добавить опцию счетчика',
+    'form_title_txt'        => 'Заголовок формы',
+    'form_content_txt'      => 'Содержимое формы',
+    'search_txt'            => 'Искать сейчас',
+    'budget_range'          => 'Укажите диапазон бюджета',
+    'min_price'             => 'Минимальная цена',
+    'max_price'             => 'Максимальная цена',
+    'about_category_txt'    => 'Расскажите о категории',
+    'looking_for_txt'       => 'Что вы ищете?',
+    // 'item_txt'                                       => 'Item #:counter',
+    'item_txt'          => 'Элемент',
+    'heading_label'     => 'Заголовок',
+    'content_label'     => 'Содержимое',
+    'add_item'          => 'Добавить элемент',
+
+    // ------------------- Hiring process component ----------------------- \\
+    'add_video_link' => 'Добавить ссылку на видео',
+    //--------------------- Mobile app section ------------------ \\
+    'app_store_alt'                 => 'App Store',
+    'play_store_alt'                => 'Play Store',
+    'mobile_app_alt'                => 'изображение пользователей',
+    'upload_app_store_img'          => 'Загрузить изображение App Store',
+    'upload_play_store_img'         => 'Загрузить изображение Play Store',
+    'add_play_store_url'            => 'URL Play Store',
+    'add_app_store_url'             => 'URL App Store',
+    'add_short_desc'                => 'Краткое описание',
+    'add_mobile_app_image'          => 'Изображение мобильного приложения',
+    'add_mobile_app_bg'             => 'Фон',
+
+    //--------------------- Footer section ------------------ \\
+    'mobile_app_heading'            => 'Заголовок раздела мобильного приложения',
+    'category_heading'              => 'Добавить заголовок категории',
+    'newsletter_heading'            => 'Добавить заголовок рассылки',
+    'add_phone_number'              => 'Добавить номер телефона',
+    'phone_call_availablity'        => 'Добавить время доступности для звонков',
+    'add_email'                     => 'Добавить email',
+    'add_fax'                       => 'Добавить факс',
+    'add_whatsapp'                  => 'Добавить номер WhatsApp',
+    'whatsapp_availablity_time'     => 'Добавить время доступности для WhatsApp',
+    'facebook_link'                 => 'Добавить ссылку на Facebook',
+    'twitter_link'                  => 'Добавить ссылку на Twitter',
+    'linkedin_link'                 => 'Добавить ссылку на LinkedIn',
+    'dribbble_link'                 => 'Добавить ссылку на Dribbble',
+    'show_all'                      => '+ показать все',
+
+    //--------------------- Footer section ------------------ \\
+    'explore_btn_txt'   => 'Текст кнопки "Исследовать"',
+    'upload_site_logo'  => 'Логотип сайта',
+
+    //--------------------- opportunities section ------------------ \\
+    'join_us_btn_txt'       => 'Присоединяйтесь сегодня',
+    'point_label'           => 'Точка, которая отображается',
+    'add_tagline_title'     => 'Добавить заголовок слогана',
+
+    //--------------------- Headerv2 section ------------------ \\
+    'btn_txt'           => 'Текст кнопки',
+    'upload_main_img'   => 'Загрузить основное изображение',
+    'upload_card_img'   => 'Загрузить изображение карточки',
+
+    //--------------------- Headerv2 section ------------------ \\
+    'page_content'      => 'Содержимое страницы',
+    'name'              => 'Имя',
+    'address'           => 'Адрес',
+    'feedback_rating'   => 'Оценка обратной связи',
+
+    //--------------------- Question Search section ------------------ \\
+    'search_btn_txt'    => 'Текст кнопки "Поиск"',
+    'list_title'        => 'Заголовок списка вопросов',
+    'question_label'    => 'Вопрос',
+    'answer_label'      => 'Ответ',
+
+    //--------------------- Send Question section ------------------ \\
+    'submit_question_title'     => 'Отправить свой вопрос',
+    'full_name_label'           => 'Полное имя',
+    'full_name_plc_hldr'        => 'Введите ваше полное имя',
+    'email_label'               => 'Адрес электронной почты',
+    'email_plc_hldr'            => 'Введите ваш адрес электронной почты',
+    'question_subject_label'    => 'Тема вопроса',
+    'question_subj_plc_hldr'    => 'Добавьте тему вашего вопроса',
+    'desc_label'                => 'Описание',
+    'desc_plc_hldr'             => 'Введите описание',
+    'agreement_desc'            => 'Я прочитал(а) и согласен(а) со всеми',
+    'terms_condition'           => 'условиями',
+    'submit_question'           => 'Отправить вопрос сейчас',
+    'submit_btn_txt'            => 'Текст кнопки "Отправить вопрос"',
+    'upload_photo'              => 'Загрузить фото',
+    //----------------------Languages-------------------\\
+    'lang_en'                                           => 'EN',
+    'lang_ar'                                           => 'AR',
+    'lang_fr'                                           => 'FR',
+    'lang_es'                                           => 'ES',
+    'lang_ru'                                           => 'RU',
+    'lang_pt'                                           => 'PT',
+];
