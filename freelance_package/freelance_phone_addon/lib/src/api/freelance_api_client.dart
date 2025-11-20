@@ -1,36 +1,43 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
 import '../models/bid.dart';
+import '../models/certification.dart';
 import '../models/dispute.dart';
 import '../models/dispute_stage.dart';
+import '../models/education_entry.dart';
 import '../models/escrow.dart';
 import '../models/escrow_action.dart';
 import '../models/gig.dart';
-import '../models/pagination.dart';
 import '../models/gig_management.dart';
+import '../models/pagination.dart';
+import '../models/profile_portfolio.dart';
+import '../models/profile_review.dart';
 import '../models/project.dart';
 import '../models/project_board.dart';
+import '../models/recommendations.dart';
+import '../models/search_result.dart';
 import '../models/tag.dart';
-import '../models/profile_portfolio.dart';
-import '../models/education_entry.dart';
-import '../models/certification.dart';
-import '../models/profile_review.dart';
 
 class FreelanceApiClient {
   FreelanceApiClient({
     required this.baseUrl,
     required this.httpClient,
     required this.tokenProvider,
+    this.requestTimeout = const Duration(seconds: 20),
   });
 
   final String baseUrl;
   final http.Client httpClient;
   final String Function() tokenProvider;
+  final Duration requestTimeout;
 
   Uri _uri(String path, [Map<String, dynamic>? query]) {
-    return Uri.parse(baseUrl).replace(path: '${Uri.parse(baseUrl).path}$path', queryParameters: query);
+    final base = Uri.parse(baseUrl);
+    final normalizedPath = base.path.endsWith('/') ? base.path : '${base.path}/';
+    return base.replace(path: '$normalizedPath$path', queryParameters: query);
   }
 
   Map<String, String> _headers() {
@@ -43,23 +50,35 @@ class FreelanceApiClient {
   }
 
   Future<Map<String, dynamic>> _get(String path, [Map<String, dynamic>? query]) async {
-    final response = await httpClient.get(_uri(path, query), headers: _headers());
+    final response = await _send(() => httpClient.get(_uri(path, query), headers: _headers()));
     return _decode(response);
   }
 
   Future<Map<String, dynamic>> _post(String path, Map<String, dynamic> body) async {
-    final response = await httpClient.post(_uri(path), headers: _headers(), body: jsonEncode(body));
+    final response = await _send(
+      () => httpClient.post(_uri(path), headers: _headers(), body: jsonEncode(body)),
+    );
     return _decode(response);
   }
 
   Future<Map<String, dynamic>> _put(String path, Map<String, dynamic> body) async {
-    final response = await httpClient.put(_uri(path), headers: _headers(), body: jsonEncode(body));
+    final response = await _send(
+      () => httpClient.put(_uri(path), headers: _headers(), body: jsonEncode(body)),
+    );
     return _decode(response);
   }
 
   Future<void> _delete(String path) async {
-    final response = await httpClient.delete(_uri(path), headers: _headers());
+    final response = await _send(() => httpClient.delete(_uri(path), headers: _headers()));
     _decode(response);
+  }
+
+  Future<http.Response> _send(Future<http.Response> Function() request) async {
+    try {
+      return await request().timeout(requestTimeout);
+    } on TimeoutException catch (error) {
+      throw FreelanceApiException('Request timed out after ${requestTimeout.inSeconds}s: ${error.message ?? ''}');
+    }
   }
 
   Map<String, dynamic> _decode(http.Response response) {
@@ -67,7 +86,11 @@ class FreelanceApiClient {
       if (response.body.isEmpty) {
         return <String, dynamic>{};
       }
-      return jsonDecode(response.body) as Map<String, dynamic>;
+      try {
+        return jsonDecode(response.body) as Map<String, dynamic>;
+      } on FormatException catch (error) {
+        throw FreelanceApiException('Unable to parse response: ${error.message}');
+      }
     }
     throw FreelanceApiException('Request failed [${response.statusCode}]: ${response.body}');
   }
@@ -129,6 +152,25 @@ class FreelanceApiClient {
   Future<ProjectBoard> fetchProjectBoard(String slug) async {
     final data = await _get('project/$slug/board');
     return ProjectBoard.fromJson(data['data'] as Map<String, dynamic>?);
+  }
+
+  Future<FreelanceSearchResult> searchFreelance({
+    required String query,
+    int page = 1,
+    int perPage = 20,
+  }) async {
+    final data = await _get('freelance/search', {
+      'q': query,
+      'page': page.toString(),
+      'per_page': perPage.toString(),
+    });
+
+    return FreelanceSearchResult.fromJson((data['data'] as Map<String, dynamic>?) ?? data);
+  }
+
+  Future<FreelanceRecommendations> fetchRecommendations({int limit = 10}) async {
+    final data = await _get('freelance/recommendations', {'limit': limit.toString()});
+    return FreelanceRecommendations.fromJson((data['data'] as Map<String, dynamic>?) ?? data);
   }
 
   Future<void> updateProfileTags({required List<String> tags, String type = 'freelancer'}) async {

@@ -30,6 +30,8 @@ export 'src/models/profile_portfolio.dart';
 export 'src/models/education_entry.dart';
 export 'src/models/certification.dart';
 export 'src/models/profile_review.dart';
+export 'src/models/recommendations.dart';
+export 'src/models/search_result.dart';
 export 'src/state/core_providers.dart';
 export 'src/repositories/freelance_repository.dart';
 export 'src/state/gig_provider.dart';

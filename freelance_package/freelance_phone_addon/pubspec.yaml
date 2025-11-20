@@ -1,6 +1,6 @@
 name: freelance_phone_addon
 description: Flutter addon package that mirrors the Taskup freelance React Native experience with gigs, projects, bids, disputes, and escrow flows.
-version: 0.1.0
+version: 0.2.0
 publish_to: 'none'
 
 environment:
