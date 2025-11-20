@@ -50,6 +50,11 @@ The latest release also adds:
    php artisan migrate
    ```
 
+5. (Optional) Wire the freelance module into your **search index** and **activity feed**. The publishable config exposes
+   `search` and `feed` blocks so you can toggle indexing, queue names, and recommendation weightings. Use the included
+   events in the publishable `app/` folder to listen for gig/project lifecycle changes and push them into your search or live
+   feed pipeline.
+
 ## Contents
 
 - `publishable/app`: Models, controllers, middleware, services, requests, resources, and Livewire components copied from the Taskup freelance module.
@@ -64,3 +69,5 @@ The latest release also adds:
 - The publish step copies the Taskup `app` layer files directly into your host application so namespaces and imports continue to function.
 - Ensure any payment gateways referenced by `VerfiyPaymentGateway` middleware are configured in the host environment.
 - The package targets Laravel 10 and PHP 8.1+ (matching the upstream Taskup app).
+- For production, enable queue workers for search/recommendation jobs, configure cache for `feed.recommendations`, and register
+  broadcast channels your live feed uses. Defaults in `freelance.php` are conservative and can be tuned per environment.

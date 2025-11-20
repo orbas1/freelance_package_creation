@@ -31,6 +31,29 @@ return [
         'admin_escrow_management' => true,
     ],
 
+    'search' => [
+        'enabled' => true,
+        'sync_to_feed' => true,
+        'queue' => 'default',
+        'index_prefix' => env('FREELANCE_SEARCH_PREFIX', 'freelance_'),
+    ],
+
+    'feed' => [
+        'broadcast_events' => true,
+        'log_activity' => true,
+        'channels' => ['public', 'private'],
+        'recommendations' => [
+            'enabled' => true,
+            'cache_ttl' => 3600,
+            'min_score' => 0.35,
+            'weighting' => [
+                'skills' => 0.6,
+                'recent_activity' => 0.3,
+                'mutual_connections' => 0.1,
+            ],
+        ],
+    ],
+
     'api' => [
         'middleware' => ['api'],
         'prefix' => 'api',

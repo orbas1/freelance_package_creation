@@ -9,6 +9,8 @@ import '../models/pagination.dart';
 import '../models/project.dart';
 import '../models/project_board.dart';
 import '../models/gig_management.dart';
+import '../models/recommendations.dart';
+import '../models/search_result.dart';
 import '../models/tag.dart';
 import '../models/profile_portfolio.dart';
 import '../models/education_entry.dart';
@@ -39,6 +41,13 @@ class FreelanceRepository {
   Future<List<Escrow>> fetchEscrows() => apiClient.fetchEscrows();
 
   Future<ProjectBoard> fetchProjectBoard(String slug) => apiClient.fetchProjectBoard(slug);
+  Future<FreelanceSearchResult> searchFreelance({required String query, int page = 1, int perPage = 20}) {
+    return apiClient.searchFreelance(query: query, page: page, perPage: perPage);
+  }
+
+  Future<FreelanceRecommendations> fetchRecommendations({int limit = 10}) {
+    return apiClient.fetchRecommendations(limit: limit);
+  }
   Future<GigManagement> fetchGigManagement(int id) => apiClient.fetchGigManagement(id);
   Future<List<DisputeStage>> fetchDisputeStages(int disputeId) => apiClient.fetchDisputeStages(disputeId);
   Future<void> advanceDispute({required int disputeId, required String stage, String? notes, String? decision}) {
