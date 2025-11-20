@@ -9,6 +9,7 @@ import '../models/pagination.dart';
 import '../models/project.dart';
 import '../models/project_board.dart';
 import '../models/gig_management.dart';
+import '../models/tag.dart';
 
 class FreelanceRepository {
   FreelanceRepository({required this.apiClient});
@@ -20,6 +21,8 @@ class FreelanceRepository {
   }
 
   Future<Gig> fetchGigDetails(int id) => apiClient.fetchGigDetails(id);
+
+  Future<List<FreelanceTag>> fetchTags({String? type}) => apiClient.fetchTags(type: type);
 
   Future<PagedResult<Project>> fetchProjects({Map<String, dynamic> filters = const {}}) {
     return apiClient.fetchProjects(params: filters);
@@ -40,6 +43,14 @@ class FreelanceRepository {
   Future<List<EscrowAction>> fetchEscrowActions() => apiClient.fetchEscrowActions();
   Future<void> partialRelease({required int escrowId, required double amount, required String releasedBy, String? notes}) {
     return apiClient.partialRelease(escrowId: escrowId, amount: amount, releasedBy: releasedBy, notes: notes);
+  }
+
+  Future<void> updateProfileTags({required List<String> tags, String type = 'freelancer'}) {
+    return apiClient.updateProfileTags(tags: tags, type: type);
+  }
+
+  Future<void> updateGigTags({required int gigId, required List<String> tags}) {
+    return apiClient.updateGigTags(gigId: gigId, tags: tags);
   }
 
   Future<void> recordEscrowDecision({required int escrowId, required String decision, required String admin, String? notes}) {

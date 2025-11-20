@@ -12,6 +12,7 @@ import '../models/pagination.dart';
 import '../models/gig_management.dart';
 import '../models/project.dart';
 import '../models/project_board.dart';
+import '../models/tag.dart';
 
 class FreelanceApiClient {
   FreelanceApiClient({
@@ -69,6 +70,14 @@ class FreelanceApiClient {
     return Gig.fromJson(data['data'] as Map<String, dynamic>?);
   }
 
+  Future<List<FreelanceTag>> fetchTags({String? type}) async {
+    final data = await _get('freelance/tags', {if (type != null) 'type': type});
+    return (data['data']?['tags'] as List?)
+            ?.map((json) => FreelanceTag.fromJson(json as Map<String, dynamic>?))
+            .toList() ??
+        const <FreelanceTag>[];
+  }
+
   Future<PagedResult<Project>> fetchProjects({required Map<String, dynamic> params}) async {
     final data = await _get('projects', params);
     final list = (data['data']?['projects'] as List?)
@@ -103,6 +112,19 @@ class FreelanceApiClient {
   Future<ProjectBoard> fetchProjectBoard(String slug) async {
     final data = await _get('project/$slug/board');
     return ProjectBoard.fromJson(data['data'] as Map<String, dynamic>?);
+  }
+
+  Future<void> updateProfileTags({required List<String> tags, String type = 'freelancer'}) async {
+    await _post('freelance/profile/tags', {
+      'tags': tags,
+      'type': type,
+    });
+  }
+
+  Future<void> updateGigTags({required int gigId, required List<String> tags}) async {
+    await _post('gig/$gigId/tags', {
+      'tags': tags,
+    });
   }
 
   Future<GigManagement> fetchGigManagement(int id) async {

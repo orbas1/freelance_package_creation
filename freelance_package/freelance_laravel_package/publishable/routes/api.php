@@ -18,6 +18,7 @@ use App\Http\Controllers\Api\ProjectManagementController;
 use App\Http\Controllers\Api\GigManagementController;
 use App\Http\Controllers\Api\DisputeStageController;
 use App\Http\Controllers\Api\EscrowManagementController;
+use App\Http\Controllers\Api\ProfileTagController;
 use App\Http\Controllers\OptionBuilderSettings\OptionBuilderController;
 use App\Http\Controllers\Api\ProposalController;
 use App\Http\Controllers\Api\SendMessageController;
@@ -131,6 +132,10 @@ Route::middleware('auth:sanctum', 'verified')->group(function () {
         Route::post('project/{slug}/match', [ProjectManagementController::class, 'matchFreelancers']);
         Route::post('project/{slug}/review', [ProjectManagementController::class, 'review']);
 
+        Route::get('freelance/tags', [ProfileTagController::class, 'index']);
+        Route::post('freelance/profile/tags', [ProfileTagController::class, 'saveUserTags']);
+        Route::post('gig/{id}/tags', [ProfileTagController::class, 'saveGigTags']);
+
         Route::get('gig/{id}/management', [GigManagementController::class, 'overview']);
         Route::post('gig/{id}/timeline', [GigManagementController::class, 'addTimeline']);
         Route::post('gig/{id}/faq', [GigManagementController::class, 'addFaq']);
@@ -150,6 +155,12 @@ Route::middleware('auth:sanctum', 'verified')->group(function () {
         Route::get('escrows/manage', [EscrowManagementController::class, 'index']);
         Route::post('escrow/{id}/partial-release', [EscrowManagementController::class, 'partialRelease']);
         Route::post('escrow/{id}/decision', [EscrowManagementController::class, 'adminDecision']);
+
+        Route::middleware(['role:admin,api'])->group(function () {
+            Route::post('admin/freelance/tags', [ProfileTagController::class, 'store']);
+            Route::put('admin/freelance/tags/{id}', [ProfileTagController::class, 'update']);
+            Route::delete('admin/freelance/tags/{id}', [ProfileTagController::class, 'destroy']);
+        });
     });
 Route::fallback(function () {
     return response()->message(message: __('messages.api_url_not_found'), status_code: Response::HTTP_NOT_FOUND);

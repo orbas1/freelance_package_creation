@@ -15,6 +15,7 @@ class Gig extends Equatable {
     this.reviews,
     this.isFavourite = false,
     this.attachments = const AttachmentGroup(),
+    this.tags = const <String>[],
   });
 
   final int id;
@@ -27,6 +28,7 @@ class Gig extends Equatable {
   final int? reviews;
   final bool isFavourite;
   final AttachmentGroup attachments;
+  final List<String> tags;
 
   factory Gig.fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -50,6 +52,7 @@ class Gig extends Equatable {
           : int.tryParse(json['ratings_count']?.toString() ?? ''),
       isFavourite: json['is_favourite'] == 1 || json['is_favourite'] == true,
       attachments: AttachmentGroup.fromJson(json['attachments'] as Map<String, dynamic>?),
+      tags: (json['tags'] as List?)?.map((tag) => tag.toString()).toList() ?? const <String>[],
     );
   }
 
@@ -64,8 +67,21 @@ class Gig extends Equatable {
         'ratings_count': reviews,
         'is_favourite': isFavourite,
         'attachments': attachments.toJson(),
+        'tags': tags,
       };
 
   @override
-  List<Object?> get props => [id, title, description, price, address, user, rating, reviews, isFavourite, attachments];
+  List<Object?> get props => [
+        id,
+        title,
+        description,
+        price,
+        address,
+        user,
+        rating,
+        reviews,
+        isFavourite,
+        attachments,
+        tags,
+      ];
 }

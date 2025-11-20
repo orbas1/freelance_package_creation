@@ -151,6 +151,22 @@ return new class extends Migration {
             $table->timestamps();
         });
 
+        Schema::create('freelance_tags', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->string('slug')->unique();
+            $table->string('type')->default('freelancer');
+            $table->timestamps();
+        });
+
+        Schema::create('freelance_tag_assignments', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('tag_id');
+            $table->unsignedBigInteger('assignable_id');
+            $table->string('assignable_type');
+            $table->timestamps();
+        });
+
         Schema::create('escrow_actions', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('escrow_id');
@@ -179,6 +195,8 @@ return new class extends Migration {
 
         Schema::dropIfExists('escrow_actions');
         Schema::dropIfExists('dispute_stages');
+        Schema::dropIfExists('freelance_tag_assignments');
+        Schema::dropIfExists('freelance_tags');
         Schema::dropIfExists('custom_gigs');
         Schema::dropIfExists('gig_reviews');
         Schema::dropIfExists('gig_change_requests');

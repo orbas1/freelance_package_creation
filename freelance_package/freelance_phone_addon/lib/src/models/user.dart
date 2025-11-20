@@ -9,6 +9,9 @@ class UserProfile extends Equatable {
     this.location,
     this.rating,
     this.ratingCount,
+    this.freelancerTags = const <String>[],
+    this.gigTags = const <String>[],
+    this.skills = const <String>[],
   });
 
   final int id;
@@ -18,6 +21,9 @@ class UserProfile extends Equatable {
   final String? location;
   final double? rating;
   final int? ratingCount;
+  final List<String> freelancerTags;
+  final List<String> gigTags;
+  final List<String> skills;
 
   factory UserProfile.fromJson(Map<String, dynamic>? json) {
     if (json == null) {
@@ -35,6 +41,13 @@ class UserProfile extends Equatable {
       ratingCount: json['ratings_count'] is int
           ? json['ratings_count']
           : int.tryParse(json['ratings_count']?.toString() ?? ''),
+      freelancerTags: (json['freelancer_tags'] as List?)?.map((e) => e.toString()).toList() ??
+          (json['tags'] as List?)?.map((e) => e.toString()).toList() ??
+          const <String>[],
+      gigTags: (json['gig_tags'] as List?)?.map((e) => e.toString()).toList() ?? const <String>[],
+      skills: (json['skills'] as List?)?.map((e) => e.toString()).toList() ??
+          (json['skill_tags'] as List?)?.map((e) => e.toString()).toList() ??
+          const <String>[],
     );
   }
 
@@ -46,8 +59,22 @@ class UserProfile extends Equatable {
         'address': location,
         'rating': rating,
         'ratings_count': ratingCount,
+        'freelancer_tags': freelancerTags,
+        'gig_tags': gigTags,
+        'skills': skills,
       };
 
   @override
-  List<Object?> get props => [id, name, avatar, userType, location, rating, ratingCount];
+  List<Object?> get props => [
+        id,
+        name,
+        avatar,
+        userType,
+        location,
+        rating,
+        ratingCount,
+        freelancerTags,
+        gigTags,
+        skills,
+      ];
 }

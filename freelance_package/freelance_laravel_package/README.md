@@ -8,6 +8,7 @@ The latest release also adds:
 - Gig management extensions (timelines, FAQs, add-ons, packages, requirements, change requests, custom gigs, and gig reviews).
 - Dispute lifecycle tracking (initial → mediation → partial/full refunds → arbitration → closed) with history of stage transitions.
 - Escrow management utilities (partial releases, admin decisions, released totals) compatible with the mobile add-on.
+- Profile enrichment (freelancer tags, gig tags, and skills) with admin endpoints to seed and curate the shared tag taxonomy.
 
 ## Installation
 
