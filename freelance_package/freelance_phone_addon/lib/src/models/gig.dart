@@ -1,87 +1,35 @@
-import 'package:equatable/equatable.dart';
-
-import 'attachment.dart';
-import 'user.dart';
-
-class Gig extends Equatable {
-  const Gig({
+class Gig {
+  Gig({
     required this.id,
     required this.title,
-    required this.description,
+    required this.status,
     required this.price,
-    this.address,
-    this.user,
-    this.rating,
-    this.reviews,
-    this.isFavourite = false,
-    this.attachments = const AttachmentGroup(),
-    this.tags = const <String>[],
+    required this.rating,
+    required this.ordersQueue,
   });
 
   final int id;
   final String title;
-  final String description;
+  final String status;
   final double price;
-  final String? address;
-  final UserProfile? user;
-  final double? rating;
-  final int? reviews;
-  final bool isFavourite;
-  final AttachmentGroup attachments;
-  final List<String> tags;
+  final double rating;
+  final int ordersQueue;
 
-  factory Gig.fromJson(Map<String, dynamic>? json) {
-    if (json == null) {
-      return const Gig(id: 0, title: '', description: '', price: 0);
-    }
-    final priceValue = json['price'] ?? json['min_price'];
-    return Gig(
-      id: json['id'] is int ? json['id'] : int.tryParse(json['id']?.toString() ?? '') ?? 0,
-      title: json['title']?.toString() ?? '',
-      description: json['description']?.toString() ?? json['detail']?.toString() ?? '',
-      price: priceValue is num
-          ? (priceValue as num).toDouble()
-          : double.tryParse(priceValue?.toString() ?? '') ?? 0,
-      address: json['address']?.toString(),
-      user: UserProfile.fromJson(json['user'] as Map<String, dynamic>?),
-      rating: json['rating'] is num
-          ? (json['rating'] as num).toDouble()
-          : double.tryParse(json['rating']?.toString() ?? ''),
-      reviews: json['ratings_count'] is int
-          ? json['ratings_count']
-          : int.tryParse(json['ratings_count']?.toString() ?? ''),
-      isFavourite: json['is_favourite'] == 1 || json['is_favourite'] == true,
-      attachments: AttachmentGroup.fromJson(json['attachments'] as Map<String, dynamic>?),
-      tags: (json['tags'] as List?)?.map((tag) => tag.toString()).toList() ?? const <String>[],
-    );
-  }
+  factory Gig.fromJson(Map<String, dynamic> json) => Gig(
+        id: json['id'] as int,
+        title: json['title'] as String,
+        status: json['status'] as String? ?? 'draft',
+        price: (json['price'] as num?)?.toDouble() ?? 0,
+        rating: (json['rating'] as num?)?.toDouble() ?? 0,
+        ordersQueue: json['orders_queue'] as int? ?? 0,
+      );
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'title': title,
-        'description': description,
+        'status': status,
         'price': price,
-        'address': address,
-        'user': user?.toJson(),
         'rating': rating,
-        'ratings_count': reviews,
-        'is_favourite': isFavourite,
-        'attachments': attachments.toJson(),
-        'tags': tags,
+        'orders_queue': ordersQueue,
       };
-
-  @override
-  List<Object?> get props => [
-        id,
-        title,
-        description,
-        price,
-        address,
-        user,
-        rating,
-        reviews,
-        isFavourite,
-        attachments,
-        tags,
-      ];
 }
