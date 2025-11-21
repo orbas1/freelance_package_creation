@@ -1,36 +1,52 @@
 import 'package:flutter/material.dart';
-import '../../widgets/metric_grid.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ClientDashboardScreen extends StatelessWidget {
+import '../../state/dashboard_provider.dart';
+import '../../widgets/metric_grid.dart';
+import '../../widgets/project_card.dart';
+
+class ClientDashboardScreen extends ConsumerWidget {
   const ClientDashboardScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    final metrics = [
-      MetricItem(label: 'Open projects', value: '2'),
-      MetricItem(label: 'Active contracts', value: '3'),
-      MetricItem(label: 'In escrow', value: '\$1,200'),
-      MetricItem(label: 'Total spent', value: '\$9,800'),
-    ];
+  Widget build(BuildContext context, WidgetRef ref) {
+    final snapshot = ref.watch(dashboardSnapshotProvider);
+
     return Scaffold(
       appBar: AppBar(title: const Text('Client Dashboard')),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MetricGrid(metrics: metrics),
-            const SizedBox(height: 16),
-            Text('Active contracts', style: Theme.of(context).textTheme.titleMedium),
-            const ListTile(title: Text('API build with Alice'), subtitle: Text('In Progress')),
-            const SizedBox(height: 16),
-            Text('Open disputes', style: Theme.of(context).textTheme.titleMedium),
-            const ListTile(title: Text('Dispute on Landing page'), subtitle: Text('Awaiting admin')),
-            const SizedBox(height: 16),
-            Text('Recommended freelancers', style: Theme.of(context).textTheme.titleMedium),
-            const ListTile(title: Text('Sam K.'), subtitle: Text('Flutter, Firebase'), trailing: Icon(Icons.chevron_right)),
-          ],
+      body: snapshot.when(
+        data: (data) => SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MetricGrid(metrics: [
+                MetricItem(label: 'Open projects', value: data.projectCount.toString()),
+                MetricItem(label: 'Published gigs', value: data.gigCount.toString()),
+                MetricItem(label: 'Disputes', value: data.disputeCount.toString()),
+                MetricItem(label: 'Escrow items', value: data.escrows.length.toString()),
+              ]),
+              const SizedBox(height: 16),
+              Text('Recent escrow', style: Theme.of(context).textTheme.titleMedium),
+              ...data.escrows.take(3).map((escrow) => ListTile(
+                    leading: const Icon(Icons.account_balance_wallet_outlined),
+                    title: Text('Escrow #${escrow.id}'),
+                    subtitle: Text('${escrow.status} · ${escrow.currency} ${escrow.amount.toStringAsFixed(2)}'),
+                  )),
+              const SizedBox(height: 16),
+              Text('Projects in focus', style: Theme.of(context).textTheme.titleMedium),
+              ...data.recommendedProjects
+                  .map((project) => ProjectCard(project: project, onTap: () => Navigator.pushNamed(
+                        context,
+                        '/freelance/freelancer/project',
+                        arguments: project,
+                      )))
+                  .toList(),
+            ],
+          ),
         ),
+        error: (error, _) => Center(child: Text('Unable to load dashboard: $error')),
+        loading: () => const Center(child: CircularProgressIndicator()),
       ),
     );
   }
