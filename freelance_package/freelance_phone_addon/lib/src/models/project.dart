@@ -6,10 +6,12 @@ class Project {
     required this.budget,
     required this.type,
     required this.proposalsCount,
+    this.slug,
     this.clientName,
   });
 
   final int id;
+  final String? slug;
   final String title;
   final String description;
   final double budget;
@@ -19,6 +21,7 @@ class Project {
 
   factory Project.fromJson(Map<String, dynamic> json) => Project(
         id: json['id'] as int,
+        slug: json['slug'] as String?,
         title: json['title'] as String,
         description: json['description'] as String? ?? '',
         budget: (json['budget'] as num?)?.toDouble() ?? 0,
@@ -29,6 +32,7 @@ class Project {
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        if (slug != null) 'slug': slug,
         'title': title,
         'description': description,
         'budget': budget,

@@ -1,20 +1,28 @@
 import 'package:flutter/material.dart';
-import '../../../models/project.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ProposalEditScreen extends StatefulWidget {
-  const ProposalEditScreen({super.key});
+import '../../../models/project.dart';
+import '../../../repositories/freelance_repository.dart';
+
+class ProposalEditScreen extends ConsumerStatefulWidget {
+  const ProposalEditScreen({super.key, this.project});
+
+  final Project? project;
 
   @override
-  State<ProposalEditScreen> createState() => _ProposalEditScreenState();
+  ConsumerState<ProposalEditScreen> createState() => _ProposalEditScreenState();
 }
 
-class _ProposalEditScreenState extends State<ProposalEditScreen> {
+class _ProposalEditScreenState extends ConsumerState<ProposalEditScreen> {
   final _formKey = GlobalKey<FormState>();
+  final _coverLetter = TextEditingController();
   double amount = 0;
+  int durationDays = 0;
+  bool submitting = false;
 
   @override
   Widget build(BuildContext context) {
-    final Project? project = ModalRoute.of(context)?.settings.arguments as Project?;
+    final Project? project = widget.project ?? (ModalRoute.of(context)?.settings.arguments as Project?);
     final commission = amount * 0.1;
     final net = amount - commission;
     return Scaffold(
@@ -28,10 +36,19 @@ class _ProposalEditScreenState extends State<ProposalEditScreen> {
             TextFormField(
               decoration: const InputDecoration(labelText: 'Amount'),
               keyboardType: TextInputType.number,
+              validator: (v) => (double.tryParse(v ?? '') ?? 0) <= 0 ? 'Amount required' : null,
               onChanged: (v) => setState(() => amount = double.tryParse(v) ?? 0),
             ),
-            TextFormField(decoration: const InputDecoration(labelText: 'Duration (days)'), keyboardType: TextInputType.number),
-            TextFormField(maxLines: 4, decoration: const InputDecoration(labelText: 'Cover letter')),
+            TextFormField(
+              decoration: const InputDecoration(labelText: 'Duration (days)'),
+              keyboardType: TextInputType.number,
+              onChanged: (v) => setState(() => durationDays = int.tryParse(v) ?? 0),
+            ),
+            TextFormField(
+              controller: _coverLetter,
+              maxLines: 4,
+              decoration: const InputDecoration(labelText: 'Cover letter'),
+            ),
             const SizedBox(height: 12),
             Container(
               padding: const EdgeInsets.all(12),
@@ -42,11 +59,55 @@ class _ProposalEditScreenState extends State<ProposalEditScreen> {
               ]),
             ),
             const SizedBox(height: 12),
-            ElevatedButton(onPressed: () {}, child: const Text('Submit Proposal')),
-            TextButton(onPressed: () {}, child: const Text('Save Draft')),
+            ElevatedButton(
+              onPressed: submitting ? null : () => _submit(ref, project),
+              child: submitting ? const CircularProgressIndicator() : const Text('Submit Proposal'),
+            ),
+            TextButton(
+              onPressed: submitting
+                  ? null
+                  : () {
+                      _formKey.currentState?.reset();
+                      setState(() {
+                        amount = 0;
+                        durationDays = 0;
+                        _coverLetter.clear();
+                      });
+                    },
+              child: const Text('Reset'),
+            ),
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _submit(WidgetRef ref, Project? project) async {
+    if (!_formKey.currentState!.validate() || project == null) {
+      return;
+    }
+    setState(() => submitting = true);
+    try {
+      final repository = ref.read(freelanceRepositoryProvider);
+      final slug = project.slug ?? project.id.toString();
+      await repository.placeBid(
+        projectSlug: slug,
+        amount: amount,
+        currency: 'USD',
+        coverLetter: _coverLetter.text.isEmpty ? null : _coverLetter.text,
+      );
+      if (mounted) {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Proposal submitted successfully')),
+        );
+      }
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to submit proposal: $error')),
+      );
+    } finally {
+      if (mounted) setState(() => submitting = false);
+    }
   }
 }

@@ -1,19 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class ReviewScreen extends StatefulWidget {
+import '../../repositories/freelance_repository.dart';
+
+class ReviewScreen extends ConsumerStatefulWidget {
   const ReviewScreen({super.key});
 
   @override
-  State<ReviewScreen> createState() => _ReviewScreenState();
+  ConsumerState<ReviewScreen> createState() => _ReviewScreenState();
 }
 
-class _ReviewScreenState extends State<ReviewScreen> {
+class _ReviewScreenState extends ConsumerState<ReviewScreen> {
   int rating = 0;
   final _headline = TextEditingController();
   final _comment = TextEditingController();
+  bool submitting = false;
 
   @override
   Widget build(BuildContext context) {
+    final int? userId = ModalRoute.of(context)?.settings.arguments as int?;
     return Scaffold(
       appBar: AppBar(title: const Text('Leave a Review')),
       body: Padding(
@@ -34,14 +39,37 @@ class _ReviewScreenState extends State<ReviewScreen> {
             TextField(controller: _comment, maxLines: 4, decoration: const InputDecoration(labelText: 'Comment')),
             const Spacer(),
             ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Review submitted')));
-              },
-              child: const Text('Submit'),
+              onPressed: submitting || userId == null ? null : () => _submit(userId!),
+              child: submitting ? const CircularProgressIndicator() : const Text('Submit'),
             )
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _submit(int userId) async {
+    setState(() => submitting = true);
+    try {
+      final repo = ref.read(freelanceRepositoryProvider);
+      await repo.submitProfileReview(
+        userId: userId,
+        rating: rating.toDouble(),
+        comment: _comment.text.isEmpty ? null : _comment.text,
+        reference: _headline.text.isEmpty ? null : _headline.text,
+      );
+      if (mounted) {
+        Navigator.pop(context);
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Review submitted successfully')),
+        );
+      }
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Unable to submit review: $error')),
+      );
+    } finally {
+      if (mounted) setState(() => submitting = false);
+    }
   }
 }
