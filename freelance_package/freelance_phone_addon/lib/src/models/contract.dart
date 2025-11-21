@@ -1,45 +1,39 @@
-import 'package:equatable/equatable.dart';
+import 'milestone.dart';
 
-import 'bid.dart';
-
-class Contract extends Equatable {
-  const Contract({
+class Contract {
+  Contract({
     required this.id,
+    required this.title,
+    required this.amount,
     required this.status,
-    required this.total,
-    this.bid,
-    this.dueDate,
+    required this.counterpart,
+    required this.milestones,
   });
 
   final int id;
+  final String title;
+  final double amount;
   final String status;
-  final double total;
-  final Bid? bid;
-  final String? dueDate;
+  final String counterpart;
+  final List<Milestone> milestones;
 
-  factory Contract.fromJson(Map<String, dynamic>? json) {
-    if (json == null) {
-      return const Contract(id: 0, status: 'draft', total: 0);
-    }
-    return Contract(
-      id: json['id'] is int ? json['id'] : int.tryParse(json['id']?.toString() ?? '') ?? 0,
-      status: json['status']?.toString() ?? 'draft',
-      total: json['total'] is num
-          ? (json['total'] as num).toDouble()
-          : double.tryParse(json['total']?.toString() ?? '') ?? 0,
-      bid: Bid.fromJson(json['bid'] as Map<String, dynamic>?),
-      dueDate: json['due_date']?.toString(),
-    );
-  }
+  factory Contract.fromJson(Map<String, dynamic> json) => Contract(
+        id: json['id'] as int,
+        title: json['title'] as String,
+        amount: (json['amount'] as num).toDouble(),
+        status: json['status'] as String? ?? 'active',
+        counterpart: json['counterpart'] as String? ?? '',
+        milestones: (json['milestones'] as List<dynamic>? ?? [])
+            .map((e) => Milestone.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
 
   Map<String, dynamic> toJson() => {
         'id': id,
+        'title': title,
+        'amount': amount,
         'status': status,
-        'total': total,
-        'bid': bid?.toJson(),
-        'due_date': dueDate,
+        'counterpart': counterpart,
+        'milestones': milestones.map((e) => e.toJson()).toList(),
       };
-
-  @override
-  List<Object?> get props => [id, status, total, bid, dueDate];
 }
